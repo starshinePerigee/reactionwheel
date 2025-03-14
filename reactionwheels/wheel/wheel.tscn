@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cln82qh76nwg0"]
+
+[ext_resource type="Texture2D" uid="uid://lixpjtcc1pbu" path="res://wheel/core/wheel_outline.svg" id="1_4132s"]
+[ext_resource type="PackedScene" uid="uid://ckwxbb6wxun2h" path="res://wheel/segment/segment-90.tscn" id="2_c4osw"]
+
+[node name="Wheel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 535.0
+offset_bottom = 535.0
+texture = ExtResource("1_4132s")
+
+[node name="Segment90" parent="TextureRect" instance=ExtResource("2_c4osw")]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+scale = Vector2(0.5, 0.5)
