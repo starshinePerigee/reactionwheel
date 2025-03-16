@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4uxrnc6iond"
-path="res://.godot/imported/segment-90.svg-0810ee8b53c3a87a935cd94e255b06fb.ctex"
+uid="uid://qgq0vmalgeq8"
+path="res://.godot/imported/action.svg-f966d8dabc25076121864a63e8e91d37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wheel/segment/segment-90.svg"
-dest_files=["res://.godot/imported/segment-90.svg-0810ee8b53c3a87a935cd94e255b06fb.ctex"]
+source_file="res://objects/action/action.svg"
+dest_files=["res://.godot/imported/action.svg-f966d8dabc25076121864a63e8e91d37.ctex"]
 
 [params]
 

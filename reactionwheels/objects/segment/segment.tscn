@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcjsl7506bdq3"]
+
+[ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/segment/segment.gd" id="1_aroni"]
+[ext_resource type="Texture2D" uid="uid://c4uxrnc6iond" path="res://objects/segment/segment-90.svg" id="2_hfl3a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_34rhw"]
+line_spacing = 0.0
+font_size = 180
+font_color = Color(0.109804, 0.109804, 0.109804, 1)
+outline_size = 64
+outline_color = Color(0.11, 0.11, 0.11, 1)
+
+[node name="Segment" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aroni")
+
+[node name="SegmentFill" type="TextureRect" parent="."]
+self_modulate = Color(0.94902, 0, 1, 1)
+layout_mode = 1
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("2_hfl3a")
+
+[node name="SegmentIcon" type="Label" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+rotation = -0.785398
+pivot_offset = Vector2(200, 200)
+text = "🔝"
+label_settings = SubResource("LabelSettings_34rhw")
+horizontal_alignment = 1
+vertical_alignment = 1

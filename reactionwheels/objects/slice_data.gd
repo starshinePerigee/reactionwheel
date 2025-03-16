@@ -16,8 +16,8 @@ class SliceDef:
 
 #region instances
 static var NO_SLICE = SliceDef.new("null", "▪", Color("1c1c1c"))
-static var TEST_SLICE = SliceDef.new("debug", "❎", Color("f200ff"))
-static var POWER = SliceDef.new("power", "⚡", Color("ffcc00"))
+static var TEST_SLICE = SliceDef.new("debug", "🔝", Color("f200ff"))
+static var POWER = SliceDef.new("power", "⚡", Color("00fce3"))
 static var HEAT = SliceDef.new("heat", "🔥", Color("e60010"))
 #endregion
 

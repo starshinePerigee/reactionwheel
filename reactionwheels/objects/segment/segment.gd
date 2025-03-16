@@ -5,4 +5,4 @@ extends Control
 	set(value):
 		flavor = value
 		$SegmentFill.self_modulate = SliceData.FLAVOR_DICT[flavor].mod_color
-		$SegmentFill/SegmentIcon.text = SliceData.FLAVOR_DICT[flavor].icon
+		$SegmentIcon.text = SliceData.FLAVOR_DICT[flavor].icon

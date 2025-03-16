@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="535.29468"
-   height="535.29468"
-   viewBox="0 0 535.29468 535.29468"
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
    version="1.1"
    id="svg1"
+   sodipodi:docname="action_tail.svg"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
-   sodipodi:docname="wheel_outline.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="1.0058333"
-     inkscape:cx="124.77216"
-     inkscape:cy="379.28749"
+     inkscape:zoom="1.0150849"
+     inkscape:cx="193.08729"
+     inkscape:cy="122.64984"
      inkscape:window-width="1680"
      inkscape:window-height="979"
      inkscape:window-x="-8"
@@ -35,25 +35,13 @@
   <defs
      id="defs1" />
   <g
-     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(1.1444092e-5,1.1444092e-5)">
-    <circle
-       style="display:inline;fill:none;stroke:#1a1a1a;stroke-width:23.2947;stroke-opacity:1"
-       id="path1"
-       cx="267.64734"
-       cy="267.64734"
-       r="256" />
+     inkscape:label="Layer 1"
+     transform="matrix(0.87802044,0,0,1.0057869,84.67999,17.785416)">
     <path
-       style="display:none;stroke:#ff00ff;stroke-width:2.83342;stroke-opacity:1"
-       d="M 11.647378,523.64738 523.64737,11.647379 m 0,512.000001 C 381.93708,373.66384 190.04867,187.83879 11.647378,11.647379"
-       id="path2"
-       sodipodi:nodetypes="cccc" />
-    <path
-       style="display:inline;stroke:#1a1a1a;stroke-width:20.6324;stroke-opacity:1"
-       d="M 87.349171,447.9717 452.06618,83.193111 M 453.41667,453.47766 81.064831,87.898651"
-       id="path3"
-       sodipodi:nodetypes="cccc" />
+       d="M -26.81626,185.6636 2.542218,236.51581 -26.81626,287.36608 H 44.664671 L 74.025374,236.51581 44.664671,185.6636 Z"
+       style="fill:#e6e6e6;stroke:#999999;stroke-width:8"
+       id="path14" />
   </g>
 </svg>

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lixpjtcc1pbu"
-path="res://.godot/imported/wheel_outline.svg-762f79b6b0a9ac32609061b6d8f55cc0.ctex"
+uid="uid://v2ag0086gqxp"
+path="res://.godot/imported/action_tail.svg-92e5d2c01a6955c06a95f67e5623b212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wheel/core/wheel_outline.svg"
-dest_files=["res://.godot/imported/wheel_outline.svg-762f79b6b0a9ac32609061b6d8f55cc0.ctex"]
+source_file="res://objects/action/action_tail.svg"
+dest_files=["res://.godot/imported/action_tail.svg-92e5d2c01a6955c06a95f67e5623b212.ctex"]
 
 [params]
 
