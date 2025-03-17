@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cufa5svjehxg7"]
+
+[ext_resource type="Script" uid="uid://unmol3al1lyc" path="res://objects/segment/test_segment/test_segment.gd" id="1_oqt60"]
+[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/segment/segment.tscn" id="2_ekxft"]
+
+[node name="TestSegment" type="Node2D"]
+script = ExtResource("1_oqt60")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 120.0
+border_color = Color(0, 1, 0.45, 1)
+
+[node name="Slice" parent="ReferenceRect" instance=ExtResource("2_ekxft")]
+flavor = null
+
+[node name="Flavors" type="OptionButton" parent="."]
+offset_left = 84.0
+offset_top = 235.0
+offset_right = 201.0
+offset_bottom = 266.0
+selected = 0
+item_count = 4
+popup/item_0/text = "NO_SLICE"
+popup/item_0/id = 0
+popup/item_1/text = "TEST_SLICE"
+popup/item_1/id = 1
+popup/item_2/text = "POWER"
+popup/item_2/id = 2
+popup/item_3/text = "HEAT"
+popup/item_3/id = 3
+
+[node name="Types" type="OptionButton" parent="."]
+offset_left = 85.0
+offset_top = 302.0
+offset_right = 217.0
+offset_bottom = 333.0
+selected = 0
+item_count = 3
+popup/item_0/text = "ICON"
+popup/item_0/id = 0
+popup/item_1/text = "BUFFBOX"
+popup/item_1/id = 1
+popup/item_2/text = "SEGMENT_90"
+popup/item_2/id = 2
+
+[connection signal="item_selected" from="Flavors" to="." method="set_seg_flavor"]
+[connection signal="item_selected" from="Types" to="." method="set_seg_type"]

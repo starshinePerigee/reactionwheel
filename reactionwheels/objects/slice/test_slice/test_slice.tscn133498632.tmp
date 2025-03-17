@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cufa5svjehxg7"]
 
-[ext_resource type="Script" uid="uid://unmol3al1lyc" path="res://objects/segment/test_segment/test_segment.gd" id="1_oqt60"]
-[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/segment/segment.tscn" id="2_ekxft"]
+[ext_resource type="Script" uid="uid://unmol3al1lyc" path="res://objects/slice/test_slice/test_slice.gd" id="1_oqt60"]
+[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="2_ekxft"]
 
 [node name="TestSegment" type="Node2D"]
 script = ExtResource("1_oqt60")
@@ -36,14 +36,6 @@ offset_left = 85.0
 offset_top = 302.0
 offset_right = 217.0
 offset_bottom = 333.0
-selected = 0
-item_count = 3
-popup/item_0/text = "ICON"
-popup/item_0/id = 0
-popup/item_1/text = "BUFFBOX"
-popup/item_1/id = 1
-popup/item_2/text = "SEGMENT_90"
-popup/item_2/id = 2
 
 [connection signal="item_selected" from="Flavors" to="." method="set_seg_flavor"]
 [connection signal="item_selected" from="Types" to="." method="set_seg_type"]

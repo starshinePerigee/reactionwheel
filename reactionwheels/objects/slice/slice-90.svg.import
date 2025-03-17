@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kcai66dlcygv"
-path="res://.godot/imported/buffer-box.svg-d83db732906a8daf40e35e3f312d005e.ctex"
+uid="uid://c4uxrnc6iond"
+path="res://.godot/imported/slice-90.svg-705184f8bca3cfeafa5b334f4d1dd9c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/segment/buffer-box.svg"
-dest_files=["res://.godot/imported/buffer-box.svg-d83db732906a8daf40e35e3f312d005e.ctex"]
+source_file="res://objects/slice/slice-90.svg"
+dest_files=["res://.godot/imported/slice-90.svg-705184f8bca3cfeafa5b334f4d1dd9c8.ctex"]
 
 [params]
 

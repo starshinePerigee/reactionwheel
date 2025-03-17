@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://n6os6n6vg5kf"]
+[gd_scene load_steps=3 format=3 uid="uid://n6os6n6vg5kf"]
 
 [ext_resource type="Script" uid="uid://cu5vqbscdi3qn" path="res://objects/buffer/buffer.gd" id="1_bu706"]
+[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="2_y65av"]
 
 [node name="Buffer" type="Control"]
 layout_mode = 3
@@ -23,3 +24,23 @@ text = "NEW BUFFER"
 [node name="SlotContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+
+[node name="SliceContainer0" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+layout_mode = 2
+flavor = 0
+slice_type = 1
+
+[node name="SliceContainer1" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+layout_mode = 2
+flavor = 0
+slice_type = 1
+
+[node name="SliceContainer2" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+layout_mode = 2
+flavor = 0
+slice_type = 1
+
+[node name="SliceContainer3" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+layout_mode = 2
+flavor = 0
+slice_type = 1

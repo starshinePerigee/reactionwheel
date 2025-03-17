@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcjsl7506bdq3"]
 
-[ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/segment/segment.gd" id="1_aroni"]
-[ext_resource type="Texture2D" uid="uid://kcai66dlcygv" path="res://objects/segment/buffer-box.svg" id="2_eqdby"]
+[ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="1_aroni"]
+[ext_resource type="Texture2D" uid="uid://kcai66dlcygv" path="res://objects/slice/buffer-box.svg" id="2_eqdby"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_34rhw"]
 line_spacing = 0.0
@@ -10,16 +10,15 @@ font_color = Color(0.109804, 0.109804, 0.109804, 1)
 outline_size = 4
 outline_color = Color(0.11, 0.11, 0.11, 1)
 
-[node name="Segment" type="Control"]
+[node name="Slice" type="Control"]
 custom_minimum_size = Vector2(41, 41)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 41.0
 offset_bottom = 41.0
 script = ExtResource("1_aroni")
-segment_type = 1
 
-[node name="SegmentFill" type="TextureRect" parent="."]
+[node name="SliceFill" type="TextureRect" parent="."]
 self_modulate = Color(0.94902, 0, 1, 1)
 layout_mode = 1
 offset_right = 512.0
@@ -27,7 +26,7 @@ offset_bottom = 512.0
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_eqdby")
 
-[node name="SegmentIcon" type="Label" parent="."]
+[node name="SliceIcon" type="Label" parent="."]
 layout_mode = 0
 offset_right = 41.0
 offset_bottom = 45.0

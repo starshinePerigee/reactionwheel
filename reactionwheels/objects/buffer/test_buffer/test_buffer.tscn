@@ -1,28 +1,99 @@
-[gd_scene load_steps=3 format=3 uid="uid://lpuyvufmuwmy"]
+[gd_scene load_steps=4 format=3 uid="uid://lpuyvufmuwmy"]
 
 [ext_resource type="Script" uid="uid://3cfo5ypmxr8s" path="res://objects/buffer/test_buffer/test_buffer.gd" id="1_1gtb8"]
 [ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="2_tttqo"]
+[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="3_tttqo"]
 
 [node name="TestBuffer" type="Node2D"]
 script = ExtResource("1_1gtb8")
 
 [node name="Buffer" parent="." instance=ExtResource("2_tttqo")]
-offset_left = 65.0
-offset_top = 55.0
-offset_right = 65.0
-offset_bottom = 55.0
+offset_left = 57.0
+offset_top = 117.0
+offset_right = 57.0
+offset_bottom = 117.0
 
 [node name="LineEdit" type="LineEdit" parent="."]
-offset_left = 165.0
-offset_top = 271.0
-offset_right = 233.563
-offset_bottom = 302.0
+offset_left = 111.0
+offset_top = 27.0
+offset_right = 179.563
+offset_bottom = 58.0
 
 [node name="Label" type="Label" parent="LineEdit"]
+layout_mode = 0
 offset_left = -54.25
 offset_top = -0.25
 offset_right = -14.25
 offset_bottom = 22.75
 text = "Size:"
 
+[node name="PopLabel" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 248.1
+offset_right = 156.0
+offset_bottom = 271.1
+text = "Last Pop:"
+
+[node name="Slice" parent="PopLabel" instance=ExtResource("3_tttqo")]
+offset_left = 76.4
+offset_top = -7.09999
+offset_right = 117.4
+offset_bottom = 33.9
+flavor = 0
+
+[node name="OverflowLabel" type="Label" parent="."]
+offset_left = 283.4
+offset_top = 248.0
+offset_right = 395.4
+offset_bottom = 271.0
+text = "Last Overflow:"
+
+[node name="Slice" parent="OverflowLabel" instance=ExtResource("3_tttqo")]
+offset_left = 117.0
+offset_top = -7.0
+offset_right = 158.0
+offset_bottom = 34.0
+flavor = 0
+
+[node name="PopButton" type="Button" parent="."]
+offset_left = 85.0
+offset_top = 339.0
+offset_right = 123.0
+offset_bottom = 370.0
+text = "Pop"
+
+[node name="AddButton" type="Button" parent="."]
+offset_left = 333.0
+offset_top = 339.0
+offset_right = 372.0
+offset_bottom = 370.0
+text = "Add"
+
+[node name="Slice" parent="AddButton" instance=ExtResource("3_tttqo")]
+offset_left = -87.0
+offset_top = 45.0
+offset_right = -46.0
+offset_bottom = 86.0
+flavor = 0
+
+[node name="Flavors" type="OptionButton" parent="AddButton"]
+layout_mode = 0
+offset_left = -127.0
+offset_right = -10.0
+offset_bottom = 31.0
+selected = 0
+item_count = 4
+popup/item_0/text = "NO_SLICE"
+popup/item_0/id = 0
+popup/item_1/text = "TEST_SLICE"
+popup/item_1/id = 1
+popup/item_2/text = "POWER"
+popup/item_2/id = 2
+popup/item_3/text = "HEAT"
+popup/item_3/id = 3
+
+[connection signal="slice_buffer_overflow" from="Buffer" to="." method="_on_buffer_slice_buffer_overflow"]
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="PopButton" to="." method="_on_pop_button_pressed"]
+[connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="item_selected" from="AddButton/Flavors" to="." method="_on_flavors_item_selected"]
