@@ -4,13 +4,13 @@ extends Object
 
 #region base class
 class SliceDef:
-	var name:String
-	var icon:String
+	var slice_name:String
+	var s_icon:String
 	var mod_color:Color
 	
 	func _init(name: String, icon: String, mut: Color):
-		self.name = name
-		self.icon = icon
+		self.slice_name = name
+		self.s_icon = icon
 		self.mod_color = mut
 #endregion
 
@@ -22,12 +22,12 @@ static var HEAT = SliceDef.new("heat", "🔥", Color("e60010"))
 #endregion
 
 #region global instances
-enum Flavors {NO_SLICE, TEST_SLICE, POWER, HEAT}
+enum Slices {NO_SLICE, TEST_SLICE, POWER, HEAT}
 
 static var FLAVOR_DICT = {
-	Flavors.NO_SLICE: NO_SLICE,
-	Flavors.TEST_SLICE: TEST_SLICE,
-	Flavors.POWER: POWER,
-	Flavors.HEAT: HEAT
+	Slices.NO_SLICE: NO_SLICE,
+	Slices.TEST_SLICE: TEST_SLICE,
+	Slices.POWER: POWER,
+	Slices.HEAT: HEAT
 }
 #endregion

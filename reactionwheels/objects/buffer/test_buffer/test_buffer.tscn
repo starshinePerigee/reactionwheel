@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://lpuyvufmuwmy"]
+
+[ext_resource type="Script" uid="uid://3cfo5ypmxr8s" path="res://objects/buffer/test_buffer/test_buffer.gd" id="1_1gtb8"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="2_tttqo"]
+
+[node name="TestBuffer" type="Node2D"]
+script = ExtResource("1_1gtb8")
+
+[node name="Buffer" parent="." instance=ExtResource("2_tttqo")]
+offset_left = 65.0
+offset_top = 55.0
+offset_right = 65.0
+offset_bottom = 55.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 165.0
+offset_top = 271.0
+offset_right = 233.563
+offset_bottom = 302.0
+
+[node name="Label" type="Label" parent="LineEdit"]
+offset_left = -54.25
+offset_top = -0.25
+offset_right = -14.25
+offset_bottom = 22.75
+text = "Size:"
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
