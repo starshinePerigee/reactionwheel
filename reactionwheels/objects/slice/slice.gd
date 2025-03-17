@@ -7,6 +7,10 @@ enum SliceTypes {ICON, BUFFBOX, SEGMENT_90}
 const texture_buffbox = preload("res://objects/slice/buffer-box.svg")
 const texture_segment_90 = preload("res://objects/slice/slice-90.svg")
 
+func _ready() -> void:
+	$SliceIcon.label_settings = $SliceIcon.label_settings.duplicate()
+	slice_type = slice_type
+
 func verify_ready():
 	if not is_node_ready():
 		await ready
@@ -43,6 +47,6 @@ func set_display_config(
 			SliceTypes.ICON:
 				set_display_config(null, 1, 24, 0, 0, 0)
 			SliceTypes.BUFFBOX:
-				set_display_config(texture_buffbox, 0.125, 24, 0, 2, 0)
+				set_display_config(texture_buffbox, 0.125, 28, 0, 2, 0)
 			SliceTypes.SEGMENT_90:
-				set_display_config(texture_segment_90, 0.17, 32, 5, 36, -45)
+				set_display_config(texture_segment_90, 0.17, 36, 5, 36, -45)
