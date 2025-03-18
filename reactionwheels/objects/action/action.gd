@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name Action
 
 signal clicked
 signal activated
@@ -100,13 +101,14 @@ func _ready() -> void:
 func _on_action_body_pressed() -> void:
 	clicked.emit()
 	if not automatic:
-		full_activation()
+		if full_activation():
+			manual_completed.emit()
 
 func check_activation_cost() -> bool:
 	if activation_object != null:
 		var ok = (
-			activation_flavors 
-			and activation_object.get_flavor(activation_index) in activation_flavors
+			len(activation_flavors) == 0
+			or activation_object.get_flavor(activation_index) in activation_flavors
 		)
 		$Tail/Shade.visible = !ok
 		return ok
@@ -128,17 +130,22 @@ func do_activation():
 	activated.emit()
 
 func do_turn():
-	if not action_ready:
-		turns_waiting += 1
-		return
 	if automatic:
 		full_activation()
+	if not action_ready:
+		turns_waiting += 1
 
+func post_turn():
+	if activation_object and activation_object.get_flavor(activation_index) not in activation_flavors:
+		$Tail/Shade.visible = true
+	else:
+		$Tail/Shade.visible = false
+		
 func check_requirements() -> bool:
 	# check cooldown:
 	if not action_ready:
 		return false
-	if not inputs_optional:
+	if not inputs_optional and len(reaction_input) > 0:
 		if not input_buffer:
 			return false
 		for in_flavor in reaction_input:
@@ -146,15 +153,25 @@ func check_requirements() -> bool:
 			# but its a game jam so yolo
 			if reaction_input.count(in_flavor) > input_buffer.contents.count(in_flavor):
 				return false
+	if (
+		activation_object
+		and len(activation_flavors) > 0
+		and not automatic 
+		and activation_object.get_flavor(activation_index) == SliceData.Flavors.NO_SLICE
+	):
+		return false
 	return true
 
-func full_activation():
-	if check_requirements():
-		if activation_object:
-			if activation_object.get_flavor(activation_index) in activation_flavors:
-				do_activation()
-			activation_object.set_flavor(activation_index, SliceData.Flavors.NO_SLICE)
-		turns_waiting = 0
-		manual_completed.emit()
+func full_activation() -> bool:
+	if not check_requirements():
+		return false
+	if activation_object:
+		if activation_object.get_flavor(activation_index) in activation_flavors:
+			do_activation()
+		activation_object.set_flavor(activation_index, SliceData.Flavors.NO_SLICE)
+	else:
+		do_activation()
+	turns_waiting = 0
+	return true
 
 #endregion

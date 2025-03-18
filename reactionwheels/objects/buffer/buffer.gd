@@ -108,6 +108,8 @@ func clear_contents() -> void:
 	contents = []
 	
 func get_flavor(index: int = 0) -> SliceData.Flavors:
+	if index >= len(contents):
+		return SliceData.Flavors.NO_SLICE
 	return contents[index]
 	
 func set_flavor(index: int = 0, flavor: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:

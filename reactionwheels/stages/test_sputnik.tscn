@@ -1,0 +1,253 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxi5kfyvesomg"]
+
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="1_otovh"]
+[ext_resource type="PackedScene" uid="uid://cunsuhq6ishlo" path="res://objects/wheel/wheel.tscn" id="2_qubhb"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="3_qubhb"]
+[ext_resource type="PackedScene" uid="uid://cykb38cjy1rp6" path="res://objects/action/action.tscn" id="4_t0s86"]
+
+[node name="TestSputnik" type="Node2D"]
+
+[node name="Spacecraft" parent="." instance=ExtResource("1_otovh")]
+
+[node name="BattWheel" parent="Spacecraft" node_paths=PackedStringArray("input_buffer") instance=ExtResource("2_qubhb")]
+offset_left = 218.0
+offset_top = 223.0
+offset_right = 396.0
+offset_bottom = 250.0
+input_buffer = NodePath("../BatBuff")
+
+[node name="Label" parent="Spacecraft/BattWheel" index="0"]
+text = "Battery Management"
+
+[node name="Slice0" parent="Spacecraft/BattWheel/Core/Rotator" index="0"]
+flavor = 2
+
+[node name="Slice1" parent="Spacecraft/BattWheel/Core/Rotator" index="1"]
+flavor = 0
+
+[node name="Slice2" parent="Spacecraft/BattWheel/Core/Rotator" index="2"]
+flavor = 0
+
+[node name="Slice3" parent="Spacecraft/BattWheel/Core/Rotator" index="3"]
+flavor = 0
+
+[node name="RadioWheel" parent="Spacecraft" node_paths=PackedStringArray("input_buffer") instance=ExtResource("2_qubhb")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 726.0
+offset_top = 293.0
+offset_right = 908.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+input_buffer = NodePath("../SCBuff")
+
+[node name="Label" parent="Spacecraft/RadioWheel" index="0"]
+text = "Radio"
+
+[node name="Slice0" parent="Spacecraft/RadioWheel/Core/Rotator" index="0"]
+flavor = 0
+
+[node name="Slice1" parent="Spacecraft/RadioWheel/Core/Rotator" index="1"]
+flavor = 0
+
+[node name="Slice2" parent="Spacecraft/RadioWheel/Core/Rotator" index="2"]
+flavor = 0
+
+[node name="Slice3" parent="Spacecraft/RadioWheel/Core/Rotator" index="3"]
+flavor = 0
+
+[node name="BatBuff" parent="Spacecraft" instance=ExtResource("3_qubhb")]
+offset_left = 90.0
+offset_top = 40.0
+offset_right = 90.0
+offset_bottom = 40.0
+content_size = 8
+contents = Array[int]([2, 2, 2, 2, 2, 2, 2])
+buffer_name = "Battery"
+
+[node name="SCBuff" parent="Spacecraft" instance=ExtResource("3_qubhb")]
+offset_left = 510.0
+offset_top = 131.0
+offset_right = 510.0
+offset_bottom = 131.0
+content_size = 12
+buffer_name = "Spacecraft"
+
+[node name="OutputBuff" parent="Spacecraft" instance=ExtResource("3_qubhb")]
+offset_left = 510.0
+offset_top = 565.0
+offset_right = 510.0
+offset_bottom = 565.0
+content_size = 6
+buffer_name = "Signal"
+
+[node name="VictoryBuff" parent="Spacecraft" instance=ExtResource("3_qubhb")]
+offset_left = 1010.0
+offset_top = 565.0
+offset_right = 1010.0
+offset_bottom = 565.0
+content_size = 1
+buffer_name = "VICTORY"
+
+[node name="PassiveHeat" parent="Spacecraft" node_paths=PackedStringArray("output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 709.0
+offset_top = 50.0
+offset_right = 709.0
+offset_bottom = 50.0
+output_buffer = NodePath("../SCBuff")
+automatic = true
+turns_waiting = 0
+has_activation = false
+reaction_input = Array[int]([])
+reaction_output = Array[int]([3])
+
+[node name="PullCharge" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 244.0
+offset_top = 260.0
+offset_right = 244.0
+offset_bottom = 260.0
+scale = Vector2(-1, 1)
+activation_object = NodePath("../BattWheel")
+input_buffer = NodePath("../BatBuff")
+output_buffer = NodePath("../SCBuff")
+cooldown = 2
+turns_waiting = 2
+activation_flavors = Array[int]([2])
+reaction_input = Array[int]([])
+reaction_output = Array[int]([2, 2])
+
+[node name="Regenerate" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 379.0
+offset_top = 260.0
+offset_right = 379.0
+offset_bottom = 260.0
+activation_object = NodePath("../BattWheel")
+activation_index = 1
+input_buffer = NodePath("../BatBuff")
+output_buffer = NodePath("../BatBuff")
+cooldown = 8
+turns_waiting = 8
+activation_flavors = Array[int]([2])
+reaction_input = Array[int]([])
+reaction_output = Array[int]([3, 2, 2])
+
+[node name="Dissipate" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 379.0
+offset_top = 391.0
+offset_right = 379.0
+offset_bottom = 391.0
+activation_object = NodePath("../BattWheel")
+activation_index = 2
+input_buffer = NodePath("../BatBuff")
+output_buffer = NodePath("../BatBuff")
+automatic = true
+turns_waiting = 0
+activation_flavors = Array[int]([2, 3])
+reaction_input = Array[int]([])
+reaction_output = Array[int]([])
+
+[node name="SinkHeat" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 244.0
+offset_top = 391.0
+offset_right = 244.0
+offset_bottom = 391.0
+scale = Vector2(-1, 1)
+activation_object = NodePath("../BattWheel")
+activation_index = 3
+input_buffer = NodePath("../BatBuff")
+output_buffer = NodePath("../BatBuff")
+automatic = true
+turns_waiting = 0
+activation_flavors = Array[int]([3])
+reaction_input = Array[int]([2, 2])
+reaction_output = Array[int]([])
+inputs_optional = true
+
+[node name="SendPing" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 754.0
+offset_top = 325.0
+offset_right = 754.0
+offset_bottom = 325.0
+scale = Vector2(-1, 1)
+activation_object = NodePath("../RadioWheel")
+input_buffer = NodePath("../SCBuff")
+output_buffer = NodePath("../OutputBuff")
+activation_flavors = Array[int]([2])
+reaction_input = Array[int]([2])
+reaction_output = Array[int]([4])
+
+[node name="CycleHeat" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 889.0
+offset_top = 325.0
+offset_right = 889.0
+offset_bottom = 325.0
+activation_object = NodePath("../RadioWheel")
+activation_index = 1
+input_buffer = NodePath("../SCBuff")
+output_buffer = NodePath("../SCBuff")
+activation_flavors = Array[int]([3])
+reaction_input = Array[int]([3])
+reaction_output = Array[int]([3, 3])
+inputs_optional = true
+
+[node name="Overheat" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 889.0
+offset_top = 452.0
+offset_right = 889.0
+offset_bottom = 452.0
+activation_object = NodePath("../RadioWheel")
+activation_index = 2
+input_buffer = NodePath("../SCBuff")
+output_buffer = NodePath("../SCBuff")
+automatic = true
+cooldown = 3
+turns_waiting = 0
+activation_flavors = Array[int]([3])
+reaction_input = Array[int]([])
+reaction_output = Array[int]([3, 5])
+
+[node name="SystemFail" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 754.0
+offset_top = 452.0
+offset_right = 754.0
+offset_bottom = 452.0
+scale = Vector2(-1, 1)
+activation_object = NodePath("../RadioWheel")
+activation_index = 3
+input_buffer = NodePath("../SCBuff")
+output_buffer = NodePath("../OutputBuff")
+automatic = true
+turns_waiting = 0
+activation_flavors = Array[int]([5])
+reaction_input = Array[int]([3, 3, 3, 3])
+reaction_output = Array[int]([5])
+inputs_optional = true
+
+[node name="Action7" parent="Spacecraft" node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("4_t0s86")]
+offset_left = 759.0
+offset_top = 579.0
+offset_right = 759.0
+offset_bottom = 579.0
+activation_object = NodePath("../OutputBuff")
+activation_index = 5
+input_buffer = NodePath("../OutputBuff")
+output_buffer = NodePath("../VictoryBuff")
+has_activation = false
+reaction_input = Array[int]([4, 4, 4, 4, 4, 4])
+reaction_output = Array[int]([6])
+
+[node name="Wait" parent="Spacecraft" instance=ExtResource("4_t0s86")]
+offset_left = 90.0
+offset_top = 556.0
+offset_right = 90.0
+offset_bottom = 556.0
+cooldown = 1
+turns_waiting = 1
+has_activation = false
+reaction_input = Array[int]([])
+reaction_output = Array[int]([])
+
+[editable path="Spacecraft/BattWheel"]
+[editable path="Spacecraft/RadioWheel"]

@@ -19,15 +19,21 @@ static var NO_SLICE = FlavorDef.new("null", "▪", Color("1c1c1c"))
 static var TEST_SLICE = FlavorDef.new("debug", "🔝", Color("f200ff"))
 static var POWER = FlavorDef.new("power", "⚡", Color("00fce3"))
 static var HEAT = FlavorDef.new("heat", "🔥", Color("e60010"))
+static var SIGNAL = FlavorDef.new("signal", "📶", Color("007fd1"))
+static var DAMAGE = FlavorDef.new("damage", "💥", Color("bdab62"))
+static var STAR = FlavorDef.new("star", "🌟", Color("FFFFFF"))
 #endregion
 
 #region global instances
-enum Flavors {NO_SLICE, TEST_SLICE, POWER, HEAT}
+enum Flavors {NO_SLICE, TEST_SLICE, POWER, HEAT, SIGNAL, DAMAGE, STAR}
 
 static var FLAVOR_DICT = {
 	Flavors.NO_SLICE: NO_SLICE,
 	Flavors.TEST_SLICE: TEST_SLICE,
 	Flavors.POWER: POWER,
-	Flavors.HEAT: HEAT
+	Flavors.HEAT: HEAT,
+	Flavors.SIGNAL: SIGNAL,
+	Flavors.DAMAGE: DAMAGE,
+	Flavors.STAR: STAR
 }
 #endregion

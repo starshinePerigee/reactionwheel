@@ -1,9 +1,12 @@
 @tool
 extends VBoxContainer
+class_name Wheel
 
 func verify_ready():
 	if not is_node_ready():
 		await ready
+
+@export var input_buffer: Buffer
 
 var WHEEL_SIZE = 4
 @onready var slices = [
@@ -35,4 +38,9 @@ func get_flavor(index: int = 0) -> SliceData.Flavors:
 	
 func set_flavor(index: int = 0, flavor: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:
 	get_slice_from_pos(index).flavor = flavor
-	
+
+func do_turn():
+	rotation_position += 1
+	var active_slice = get_slice_from_pos(0)
+	if active_slice.flavor == SliceData.Flavors.NO_SLICE and input_buffer:
+		active_slice.flavor = input_buffer.pop_slice()

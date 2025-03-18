@@ -14,6 +14,10 @@ config/name="reactionwheels"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/resizable=false
+
 [editor]
 
 movie_writer/movie_file="C:/git/captures/reactionwheel_capture.avi"

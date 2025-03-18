@@ -35,8 +35,9 @@ offset_bottom = 263.0
 activation_object = NodePath("../FlavorDropdown2")
 input_buffer = NodePath("../Buffer")
 output_buffer = NodePath("../Buffer2")
+activation_flavors = Array[int]([1])
 reaction_input = Array[int]([2, 3])
-reaction_output = Array[int]([2, 1, 1])
+reaction_output = Array[int]([4])
 
 [node name="Buffer" parent="." instance=ExtResource("3_s3mjj")]
 offset_left = 99.0

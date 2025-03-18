@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="1_aroni"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_i2nmu"]
+[sub_resource type="LabelSettings" id="LabelSettings_u5dco"]
 line_spacing = 0.0
 font_size = 24
 font_color = Color(0.109804, 0.109804, 0.109804, 1)
@@ -28,6 +28,6 @@ layout_mode = 0
 offset_right = 41.0
 offset_bottom = 45.0
 text = "🔝"
-label_settings = SubResource("LabelSettings_i2nmu")
+label_settings = SubResource("LabelSettings_u5dco")
 horizontal_alignment = 1
 vertical_alignment = 1

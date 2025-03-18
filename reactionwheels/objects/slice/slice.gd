@@ -20,7 +20,7 @@ func verify_ready():
 	set(value):
 		flavor = value
 		await verify_ready()
-		print("Setting slice flavor to %s" % SliceData.FLAVOR_DICT[flavor].flavor_name)
+		#print("Setting slice flavor to %s" % SliceData.FLAVOR_DICT[flavor].flavor_name)
 		$SliceFill.self_modulate = SliceData.FLAVOR_DICT[flavor].mod_color
 		$SliceIcon.text = SliceData.FLAVOR_DICT[flavor].f_icon
 
