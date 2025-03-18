@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcjsl7506bdq3"]
+[gd_scene load_steps=3 format=3 uid="uid://bcjsl7506bdq3"]
 
 [ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="1_aroni"]
-[ext_resource type="Texture2D" uid="uid://kcai66dlcygv" path="res://objects/slice/buffer-box.svg" id="2_eqdby"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_34rhw"]
+[sub_resource type="LabelSettings" id="LabelSettings_i2nmu"]
 line_spacing = 0.0
-font_size = 32
+font_size = 24
 font_color = Color(0.109804, 0.109804, 0.109804, 1)
 outline_size = 4
 outline_color = Color(0.11, 0.11, 0.11, 1)
@@ -21,16 +20,14 @@ script = ExtResource("1_aroni")
 [node name="SliceFill" type="TextureRect" parent="."]
 self_modulate = Color(0.94902, 0, 1, 1)
 layout_mode = 1
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_eqdby")
+offset_right = 99.0
+offset_bottom = 110.0
 
 [node name="SliceIcon" type="Label" parent="."]
 layout_mode = 0
 offset_right = 41.0
 offset_bottom = 45.0
 text = "🔝"
-label_settings = SubResource("LabelSettings_34rhw")
+label_settings = SubResource("LabelSettings_i2nmu")
 horizontal_alignment = 1
 vertical_alignment = 1

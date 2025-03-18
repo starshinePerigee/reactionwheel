@@ -22,13 +22,15 @@ offset_top = 320.0
 offset_right = 212.0
 offset_bottom = 351.0
 selected = 0
-item_count = 3
+item_count = 4
 popup/item_0/text = "ICON"
 popup/item_0/id = 0
 popup/item_1/text = "BUFFBOX"
 popup/item_1/id = 1
 popup/item_2/text = "SEGMENT_90"
 popup/item_2/id = 2
+popup/item_3/text = "ACTION_TAIL"
+popup/item_3/id = 3
 
 [node name="FlavorDropdown" parent="." instance=ExtResource("3_ksiyq")]
 offset_left = 80.0

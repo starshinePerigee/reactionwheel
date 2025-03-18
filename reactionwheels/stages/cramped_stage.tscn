@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfclwtri35gd5"]
+
+[ext_resource type="PackedScene" uid="uid://cunsuhq6ishlo" path="res://objects/wheel/wheel.tscn" id="1_msy02"]
+[ext_resource type="PackedScene" uid="uid://cykb38cjy1rp6" path="res://objects/action/action.tscn" id="2_3bwdb"]
+
+[node name="CrampedStage" type="Node2D"]
+
+[node name="Wheel" parent="." instance=ExtResource("1_msy02")]
+offset_left = 132.0
+offset_top = 84.0
+offset_right = 226.0
+offset_bottom = 111.0
+
+[node name="Wheel2" parent="." instance=ExtResource("1_msy02")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 481.0
+offset_top = 404.0
+offset_right = 575.0
+offset_bottom = 431.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Wheel3" parent="." instance=ExtResource("1_msy02")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 40.0
+offset_top = 437.0
+offset_right = 134.0
+offset_bottom = 464.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Wheel4" parent="." instance=ExtResource("1_msy02")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 647.0
+offset_top = 57.0
+offset_right = 741.0
+offset_bottom = 84.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Wheel5" parent="." instance=ExtResource("1_msy02")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 918.0
+offset_top = 404.0
+offset_right = 1012.0
+offset_bottom = 431.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Action" parent="." instance=ExtResource("2_3bwdb")]
+offset_left = 329.0
+offset_top = 243.0
+offset_right = 329.0
+offset_bottom = 243.0
+
+[node name="Action2" parent="." instance=ExtResource("2_3bwdb")]
+offset_left = 330.5
+offset_top = 89.5
+offset_right = 330.5
+offset_bottom = 89.5

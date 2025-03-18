@@ -38,5 +38,6 @@ popup/item_3/id = 3
 
 [node name="Slice" parent="HBoxContainer" instance=ExtResource("2_6pmlp")]
 layout_mode = 2
+flavor = 0
 
 [connection signal="item_selected" from="HBoxContainer/Flavors" to="." method="_on_flavors_item_selected"]

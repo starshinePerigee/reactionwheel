@@ -29,3 +29,10 @@ func rot_to_pos(rot: float) -> int:
 
 func get_slice_from_pos(pos: int) -> Slice:
 	return slices[(pos - rotation_position) % 4]
+
+func get_flavor(index: int = 0) -> SliceData.Flavors:
+	return get_slice_from_pos(index).flavor
+	
+func set_flavor(index: int = 0, flavor: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:
+	get_slice_from_pos(index).flavor = flavor
+	

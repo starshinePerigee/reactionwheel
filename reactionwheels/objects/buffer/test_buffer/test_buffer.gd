@@ -10,9 +10,12 @@ func _on_buffer_slice_buffer_overflow(slice: SliceData.Flavors) -> void:
 	$OverflowLabel/Slice.flavor = slice
 
 func _on_add_button_pressed() -> void:
-	var new_flavor = $AddButtonControl/FlavorDropdown/HBoxContainer/Slice.flavor
+	var new_flavor = $AddButton/FlavorDropdown.flavor
 	$Buffer.add_slice(new_flavor)
 
 func _on_pop_button_pressed() -> void:
-	var popped = $Buffer.pop_slice()
+	var popped = $Buffer.pop_slice(int($PopButton/LineEdit2.text))
 	$PopLabel/Slice.flavor = popped
+
+func _on_remove_button_pressed() -> void:
+	$Buffer.remove_flavor($RemoveButton/FlavorDropdown.flavor)

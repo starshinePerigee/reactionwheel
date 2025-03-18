@@ -59,35 +59,48 @@ flavor = 0
 slice_type = 1
 
 [node name="PopButton" type="Button" parent="."]
-offset_left = 57.0
-offset_top = 371.0
-offset_right = 95.0
-offset_bottom = 402.0
+offset_left = 147.0
+offset_top = 381.0
+offset_right = 185.0
+offset_bottom = 412.0
 text = "Pop"
 
-[node name="AddButtonControl" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 182.0
-offset_top = 371.0
-offset_right = 485.0
-offset_bottom = 427.0
-
-[node name="FlavorDropdown" parent="AddButtonControl" instance=ExtResource("4_1nwmy")]
-layout_mode = 1
-offset_top = 6.0
-offset_bottom = 6.0
-
-[node name="AddButton" type="Button" parent="AddButtonControl"]
+[node name="LineEdit2" type="LineEdit" parent="PopButton"]
 layout_mode = 0
-offset_left = 246.0
-offset_top = 6.0
-offset_right = 285.0
-offset_bottom = 37.0
+offset_left = -90.0
+offset_right = -21.4375
+offset_bottom = 31.0
+placeholder_text = "idx"
+
+[node name="AddButton" type="Button" parent="."]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 331.0
+offset_bottom = 459.0
 text = "Add"
+
+[node name="FlavorDropdown" parent="AddButton" instance=ExtResource("4_1nwmy")]
+layout_mode = 1
+offset_top = -56.0
+offset_right = -39.0
+offset_bottom = -56.0
+
+[node name="RemoveButton" type="Button" parent="."]
+offset_left = 573.0
+offset_top = 428.0
+offset_right = 644.0
+offset_bottom = 459.0
+text = "Remove"
+
+[node name="FlavorDropdown" parent="RemoveButton" instance=ExtResource("4_1nwmy")]
+layout_mode = 1
+offset_top = -56.0
+offset_right = 0.0
+offset_bottom = -56.0
 
 [connection signal="slice_buffer_overflow" from="Buffer" to="." method="_on_buffer_slice_buffer_overflow"]
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="PopButton" to="." method="_on_pop_button_pressed"]
-[connection signal="flavor_selected" from="AddButtonControl/FlavorDropdown" to="." method="_on_flavor_dropdown_flavor_selected"]
-[connection signal="pressed" from="AddButtonControl/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="flavor_selected" from="AddButton/FlavorDropdown" to="." method="_on_flavor_dropdown_flavor_selected"]
+[connection signal="pressed" from="RemoveButton" to="." method="_on_remove_button_pressed"]

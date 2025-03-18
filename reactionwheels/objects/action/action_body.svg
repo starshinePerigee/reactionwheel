@@ -2,18 +2,18 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="512"
-   height="512"
-   viewBox="0 0 512 512"
+   width="358.82584"
+   height="110.33797"
+   viewBox="0 0 358.82584 110.33797"
    version="1.1"
    id="svg1"
-   sodipodi:docname="action_tail.svg"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="action_body.svg"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -24,24 +24,22 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.0150849"
-     inkscape:cx="193.08729"
-     inkscape:cy="122.64984"
+     inkscape:cx="88.662535"
+     inkscape:cy="33.002166"
      inkscape:window-width="1680"
      inkscape:window-height="979"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs1" />
-  <g
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="Layer 1"
-     transform="matrix(0.87802044,0,0,1.0057869,84.67999,17.785416)">
-    <path
-       d="M -26.81626,185.6636 2.542218,236.51581 -26.81626,287.36608 H 44.664671 L 74.025374,236.51581 44.664671,185.6636 Z"
-       style="fill:#e6e6e6;stroke:#999999;stroke-width:8"
-       id="path14" />
-  </g>
-</svg>
+     transform="matrix(0.87802044,0,0,1.0057869,-43.134331,-184.28133)"><path
+       id="path9"
+       style="fill:#e6e6e6;stroke:#999999;stroke-width:8;stroke-dasharray:none"
+       d="m 56.055025,187.22105 29.359379,50.85157 -29.359379,50.85156 H 240.73081 423.82456 l 29.35938,-50.85156 -29.35938,-50.85157 H 240.73081 Z" /><path
+       style="fill:#999999;stroke:#999999;stroke-width:3.68513;stroke-dasharray:none"
+       d="M 71.00873,261.49388 H 439.35478"
+       id="path11" /></g></svg>

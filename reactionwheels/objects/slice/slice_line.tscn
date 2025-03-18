@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvxfhf1qfdrqi"]
+
+[ext_resource type="Script" uid="uid://bptphpacfi0ti" path="res://objects/slice/slice_line.gd" id="1_7mna4"]
+
+[sub_resource type="FontVariation" id="FontVariation_7mna4"]
+spacing_glyph = -6
+spacing_space = 4
+spacing_top = -3
+spacing_bottom = -4
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rxlc"]
+line_spacing = 0.0
+font = SubResource("FontVariation_7mna4")
+outline_size = 4
+outline_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="SliceLine" type="Label"]
+offset_right = 11.0
+offset_bottom = 16.0
+label_settings = SubResource("LabelSettings_4rxlc")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_7mna4")

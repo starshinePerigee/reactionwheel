@@ -2,10 +2,11 @@
 class_name Slice
 extends Control
 
-enum SliceTypes {ICON, BUFFBOX, SEGMENT_90}
+enum SliceTypes {ICON, BUFFBOX, SEGMENT_90, ACTION_TAIL}
 
 const texture_buffbox = preload("res://objects/slice/buffer-box.svg")
 const texture_segment_90 = preload("res://objects/slice/slice-90.svg")
+const texture_action_tail = preload("res://objects/slice/action_tail.svg")
 
 func _ready() -> void:
 	$SliceIcon.label_settings = $SliceIcon.label_settings.duplicate()
@@ -50,3 +51,11 @@ func set_display_config(
 				set_display_config(texture_buffbox, 0.125, 28, 0, 2, 0)
 			SliceTypes.SEGMENT_90:
 				set_display_config(texture_segment_90, 0.17, 36, 5, 36, -45)
+			SliceTypes.ACTION_TAIL:
+				set_display_config(texture_action_tail, 0.5, 20, 9, 7, 0)
+
+func get_flavor(index: int = 0) -> SliceData.Flavors:
+	return flavor
+	
+func set_flavor(index: int = 0, flavor: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:
+	self.flavor = flavor

@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://mh2ffw5kcmfc"]
+
+[ext_resource type="Script" uid="uid://dnv8ahmktgdqy" path="res://objects/action/test_action/test_action.gd" id="1_usseh"]
+[ext_resource type="PackedScene" uid="uid://cykb38cjy1rp6" path="res://objects/action/action.tscn" id="2_6bl2l"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="3_s3mjj"]
+[ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor_dropdown.tscn" id="4_hu787"]
+
+[node name="TestAction" type="Node2D"]
+script = ExtResource("1_usseh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 644.0
+offset_bottom = 486.0
+color = Color(0.63, 0.63, 0.63, 1)
+
+[node name="CheckBox" type="CheckBox" parent="."]
+offset_left = 429.0
+offset_top = 318.0
+offset_right = 494.0
+offset_bottom = 349.0
+text = "Auto"
+
+[node name="CheckBox2" type="CheckBox" parent="."]
+offset_left = 298.0
+offset_top = 318.0
+offset_right = 363.0
+offset_bottom = 349.0
+text = "Any*"
+
+[node name="Action" parent="." node_paths=PackedStringArray("activation_object", "input_buffer", "output_buffer") instance=ExtResource("2_6bl2l")]
+offset_left = 258.0
+offset_top = 263.0
+offset_right = 258.0
+offset_bottom = 263.0
+activation_object = NodePath("../FlavorDropdown2")
+input_buffer = NodePath("../Buffer")
+output_buffer = NodePath("../Buffer2")
+reaction_input = Array[int]([2, 3])
+reaction_output = Array[int]([2, 1, 1])
+
+[node name="Buffer" parent="." instance=ExtResource("3_s3mjj")]
+offset_left = 99.0
+offset_top = 129.0
+offset_right = 99.0
+offset_bottom = 129.0
+buffer_name = "Input"
+
+[node name="Buffer2" parent="." instance=ExtResource("3_s3mjj")]
+offset_left = 404.0
+offset_top = 129.0
+offset_right = 404.0
+offset_bottom = 129.0
+buffer_name = "Output"
+
+[node name="FlavorDropdown" parent="." instance=ExtResource("4_hu787")]
+offset_left = 39.0
+offset_top = 64.0
+offset_right = 39.0
+offset_bottom = 64.0
+label_text = "To buffer: "
+
+[node name="Button" type="Button" parent="."]
+offset_left = 404.0
+offset_top = 64.0
+offset_right = 453.0
+offset_bottom = 95.0
+text = "Clear"
+
+[node name="WaitButton" type="Button" parent="."]
+offset_left = 355.0
+offset_top = 367.0
+offset_right = 399.0
+offset_bottom = 398.0
+text = "Wait"
+
+[node name="FlavorDropdown2" parent="." instance=ExtResource("4_hu787")]
+offset_left = 14.0
+offset_top = 270.0
+offset_right = 14.0
+offset_bottom = 270.0
+label_text = "Activation:"
+
+[node name="FlavorDropdown3" parent="." instance=ExtResource("4_hu787")]
+offset_left = 26.0
+offset_top = 413.0
+offset_right = 26.0
+offset_bottom = 413.0
+label_text = "Cost: "
+
+[node name="ForceButton" type="Button" parent="."]
+offset_left = 520.0
+offset_top = 276.0
+offset_right = 624.0
+offset_bottom = 307.0
+text = "Force Action"
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="CheckBox2" to="." method="_on_check_box_2_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="WaitButton" to="." method="_on_wait_button_pressed"]
+[connection signal="flavor_selected" from="FlavorDropdown2" to="." method="_on_flavor_dropdown_2_flavor_selected"]
+[connection signal="flavor_selected" from="FlavorDropdown3" to="." method="_on_flavor_dropdown_3_flavor_selected"]
+[connection signal="pressed" from="ForceButton" to="." method="_on_force_button_pressed"]
