@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4uxrnc6iond"
-path="res://.godot/imported/slice-90.svg-705184f8bca3cfeafa5b334f4d1dd9c8.ctex"
+uid="uid://g846dbqovbl5"
+path="res://.godot/imported/heat.svg-81faaa4a033a2b588eebf711a3b8e482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/slice/slice-90.svg"
-dest_files=["res://.godot/imported/slice-90.svg-705184f8bca3cfeafa5b334f4d1dd9c8.ctex"]
+source_file="res://assets/icons/heat.svg"
+dest_files=["res://.godot/imported/heat.svg-81faaa4a033a2b588eebf711a3b8e482.ctex"]
 
 [params]
 

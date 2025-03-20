@@ -10,11 +10,11 @@ func verify_ready():
 var flavor: SliceData.Flavors:
 	get():
 		await verify_ready()
-		return $HBoxContainer/Slice.flavor
+		return $HBoxContainer/Flavor.flavor
 	set(value):
 		await verify_ready()
 		$HBoxContainer/Flavors.select(SliceData.Flavors.get(flavor, 0))
-		$HBoxContainer/Slice.flavor = flavor
+		$HBoxContainer/Flavor.flavor = flavor
 
 @export var label_text: String = "Flavor: ":
 	set(value):
@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func _on_flavors_item_selected(index: int) -> void:
 	var new_flavor = SliceData.Flavors[$HBoxContainer/Flavors.get_item_text(index)]
-	$HBoxContainer/Slice.flavor = new_flavor
+	$HBoxContainer/Flavor.flavor = new_flavor
 	flavor_selected.emit(new_flavor)
 
 func get_flavor(index: int = 0) -> SliceData.Flavors:

@@ -1,42 +1,120 @@
-[gd_scene load_steps=4 format=3 uid="uid://cufa5svjehxg7"]
+[gd_scene load_steps=10 format=3 uid="uid://cufa5svjehxg7"]
 
 [ext_resource type="Script" uid="uid://unmol3al1lyc" path="res://objects/slice/test_slice/test_slice.gd" id="1_oqt60"]
-[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="2_ekxft"]
-[ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor_dropdown.tscn" id="3_ksiyq"]
+[ext_resource type="PackedScene" uid="uid://lywkqcthlfcc" path="res://objects/slice/slice_90.tscn" id="2_ksiyq"]
+[ext_resource type="PackedScene" uid="uid://bfbsmkqcskplt" path="res://objects/slice/slice_wheelcap_a.tscn" id="3_58u7a"]
+[ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="3_ksiyq"]
+[ext_resource type="Texture2D" uid="uid://r1106o4024sa" path="res://assets/objects/wheel_spinner.svg" id="4_160qv"]
+[ext_resource type="PackedScene" uid="uid://clilm6adxg8tv" path="res://objects/slice/slice_wheelcap_b.tscn" id="4_t3tib"]
+[ext_resource type="PackedScene" uid="uid://cmyu701swo5pq" path="res://objects/slice/slice_wheelcap_c.tscn" id="5_uhgkw"]
+[ext_resource type="PackedScene" uid="uid://b2q3v5akw0dju" path="res://objects/slice/slice_wheelcap_d.tscn" id="6_5fmtv"]
+[ext_resource type="PackedScene" uid="uid://bo824v4oe1d1m" path="res://objects/slice/slice_buffbox.tscn" id="9_t3tib"]
 
 [node name="TestSegment" type="Node2D"]
 script = ExtResource("1_oqt60")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-offset_left = 80.0
-offset_top = 80.0
-offset_right = 120.0
-offset_bottom = 120.0
-border_color = Color(0, 1, 0.45, 1)
+[node name="Slices" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Slice" parent="ReferenceRect" instance=ExtResource("2_ekxft")]
+[node name="Slice90" parent="Slices" instance=ExtResource("2_ksiyq")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 86.0
+offset_right = 122.0
+offset_bottom = 144.0
 
-[node name="Types" type="OptionButton" parent="."]
-offset_left = 80.0
-offset_top = 320.0
-offset_right = 212.0
-offset_bottom = 351.0
-selected = 0
-item_count = 4
-popup/item_0/text = "ICON"
-popup/item_0/id = 0
-popup/item_1/text = "BUFFBOX"
-popup/item_1/id = 1
-popup/item_2/text = "SEGMENT_90"
-popup/item_2/id = 2
-popup/item_3/text = "ACTION_TAIL"
-popup/item_3/id = 3
+[node name="Slice91" parent="Slices" instance=ExtResource("2_ksiyq")]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 117.0
+offset_right = 305.0
+offset_bottom = 175.0
+rotation = 1.5708
+
+[node name="Slice92" parent="Slices" instance=ExtResource("2_ksiyq")]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 116.0
+offset_right = 305.0
+offset_bottom = 174.0
+
+[node name="Slice93" parent="Slices" instance=ExtResource("2_ksiyq")]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 116.0
+offset_right = 305.0
+offset_bottom = 174.0
+rotation = 3.14159
+
+[node name="Slice94" parent="Slices" instance=ExtResource("2_ksiyq")]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 117.0
+offset_right = 305.0
+offset_bottom = 175.0
+rotation = 4.71239
+
+[node name="SliceCapA" parent="Slices" instance=ExtResource("3_58u7a")]
+self_modulate = Color(1, 0.960784, 0.839216, 1)
+layout_mode = 0
+offset_left = 172.0
+offset_top = 57.0
+offset_right = 248.0
+offset_bottom = 115.0
+
+[node name="SliceCapB" parent="Slices" instance=ExtResource("4_t3tib")]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 57.0
+offset_right = 322.0
+offset_bottom = 115.0
+
+[node name="SliceCapC" parent="Slices" instance=ExtResource("5_uhgkw")]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 116.0
+offset_right = 322.0
+offset_bottom = 174.0
+
+[node name="SliceCapD" parent="Slices" instance=ExtResource("6_5fmtv")]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 116.0
+offset_right = 248.0
+offset_bottom = 174.0
 
 [node name="FlavorDropdown" parent="." instance=ExtResource("3_ksiyq")]
 offset_left = 80.0
-offset_top = 197.0
+offset_top = 228.0
 offset_right = 80.0
-offset_bottom = 197.0
+offset_bottom = 228.0
 
-[connection signal="item_selected" from="Types" to="." method="set_seg_type"]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 188.0
+offset_top = 57.0
+offset_right = 306.0
+offset_bottom = 175.0
+texture = ExtResource("4_160qv")
+
+[node name="SliceBuffbox" parent="." instance=ExtResource("9_t3tib")]
+offset_left = 389.0
+offset_top = 73.0
+offset_right = 421.0
+offset_bottom = 105.0
+
+[node name="SliceBuffbox2" parent="." instance=ExtResource("9_t3tib")]
+offset_left = 435.0
+offset_top = 73.0
+offset_right = 467.0
+offset_bottom = 105.0
+
+[node name="SliceBuffbox3" parent="." instance=ExtResource("9_t3tib")]
+offset_left = 482.0
+offset_top = 73.0
+offset_right = 514.0
+offset_bottom = 105.0
+
 [connection signal="flavor_selected" from="FlavorDropdown" to="." method="_on_flavor_dropdown_flavor_selected"]

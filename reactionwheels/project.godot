@@ -11,12 +11,16 @@ config_version=5
 [application]
 
 config/name="reactionwheels"
+run/main_scene="uid://dbyv5uxwrtjus"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1440
+window/size/viewport_height=900
 window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [editor]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v2ag0086gqxp"
-path="res://.godot/imported/action_tail.svg-7b0d666759e6519b7ae947c353518c08.ctex"
+uid="uid://d2ry8tj5qrxcp"
+path="res://.godot/imported/heat_black.svg-fde308c460f1bda34d5f332fdf8c0f93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/slice/action_tail.svg"
-dest_files=["res://.godot/imported/action_tail.svg-7b0d666759e6519b7ae947c353518c08.ctex"]
+source_file="res://assets/icons/heat_black.svg"
+dest_files=["res://.godot/imported/heat_black.svg-fde308c460f1bda34d5f332fdf8c0f93.ctex"]
 
 [params]
 

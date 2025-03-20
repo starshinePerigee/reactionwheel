@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31t78q55lc0p"]
+
+[ext_resource type="Texture2D" uid="uid://xxrmsxjs3n45" path="res://assets/icons/debug_color.svg" id="1_gsbft"]
+[ext_resource type="Script" uid="uid://cdinqcevv2oxh" path="res://objects/flavor/flavor.gd" id="2_gsbft"]
+
+[node name="Flavor" type="TextureRect"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_gsbft")
+script = ExtResource("2_gsbft")

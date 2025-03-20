@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="power_color.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="11.313708"
+     inkscape:cx="8.9714174"
+     inkscape:cy="10.120466"
+     inkscape:window-width="1680"
+     inkscape:window-height="979"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" /><defs
+     id="defs1" /><g
+     id="g2"
+     transform="matrix(0.29916076,0,0,0.29612579,-2.2504118,-3.6769895)"
+     style="stroke-width:1.70834"><path
+       d="m 51.261569,15.23818 -30,43.332 c -0.35156,0.50781 -0.39453,1.1719 -0.10547,1.7227 0.29688,0.54687 0.86328,0.89062 1.4805,0.89062 h 18.332 v 28.332 c 0,5.086807 -0.02498,5.099989 3.03909,0.94927 l 30,-43.332 c 0.35156,-0.50781 0.39453,-1.1719 0.10547,-1.7227 -0.28906,-0.54688 -0.85938,-0.89453 -1.4766,-0.89453 h -18.332 v -28.332 c 0.141442,-4.969875 -0.133576,-4.744343 -3.04299,-0.94536 z"
+       id="path1"
+       sodipodi:nodetypes="cccscscccscsc"
+       style="display:inline;stroke-width:1.70834;fill:#17a2b8;fill-opacity:1"
+       inkscape:label="path1" /><path
+       style="fill:#ffc107;stroke:none;stroke-width:17.0834;stroke-linejoin:round;stroke-miterlimit:13.1"
+       d="M 14.135854,25.838427 24.483572,9.7669124 20.916408,22.526466 Z"
+       id="path2"
+       sodipodi:nodetypes="cccc"
+       transform="matrix(1.9666923,0,0,1.9666923,1.3963239,5.8767696)" /></g></svg>

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfbsmkqcskplt"]
+
+[ext_resource type="Texture2D" uid="uid://dtweovja4qfc1" path="res://assets/objects/wheel_action_activator.svg" id="1_cd11p"]
+[ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="2_cnkh0"]
+[ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="3_148wk"]
+
+[node name="SliceCapA" type="TextureRect"]
+self_modulate = Color(1, 0.960784, 0.839216, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_cd11p")
+stretch_mode = 2
+script = ExtResource("2_cnkh0")
+colored = true
+
+[node name="Flavor" parent="." instance=ExtResource("3_148wk")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 27.0
+offset_bottom = 28.0

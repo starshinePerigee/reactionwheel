@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://lywkqcthlfcc"]
+
+[ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="1_0o8cu"]
+[ext_resource type="Texture2D" uid="uid://bd4pv1otckryc" path="res://assets/objects/slice_90.svg" id="1_rk3ie"]
+[ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="2_0o8cu"]
+[ext_resource type="Texture2D" uid="uid://b34oyfdictigt" path="res://assets/icons/debug_black.svg" id="3_tc8xh"]
+
+[node name="Slice90" type="TextureRect"]
+self_modulate = Color(0.839216, 0.2, 0.517647, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_rk3ie")
+stretch_mode = 2
+flip_h = true
+flip_v = true
+script = ExtResource("1_0o8cu")
+
+[node name="Flavor" parent="." instance=ExtResource("2_0o8cu")]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 25.0
+offset_right = 66.0
+offset_bottom = 49.0
+rotation = 2.35619
+texture = ExtResource("3_tc8xh")
+variant = 1

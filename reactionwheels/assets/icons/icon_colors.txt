@@ -1,0 +1,6 @@
+background: fff5d6
+
+debug: d63384
+no_slice: 333333
+heat: fd7e14
+power: 17a2b8
