@@ -6,8 +6,8 @@
 
 [node name="SliceCapB" type="TextureRect"]
 self_modulate = Color(1, 0.960784, 0.839216, 1)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 75.0
+offset_bottom = 58.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_s1aop")

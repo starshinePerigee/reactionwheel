@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbyv5uxwrtjus"]
 
-[ext_resource type="PackedScene" uid="uid://dxi5kfyvesomg" path="res://stages/test_sputnik.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d0jw1yymba1qh" path="res://stages/level_10.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -10,4 +10,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TestSputnik" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Level10" parent="." instance=ExtResource("1_ig7tw")]

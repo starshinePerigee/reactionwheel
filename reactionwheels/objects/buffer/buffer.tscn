@@ -1,46 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://n6os6n6vg5kf"]
+[gd_scene load_steps=9 format=3 uid="uid://n6os6n6vg5kf"]
 
 [ext_resource type="Script" uid="uid://cu5vqbscdi3qn" path="res://objects/buffer/buffer.gd" id="1_bu706"]
-[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="2_y65av"]
+[ext_resource type="Theme" uid="uid://c3udww5em8di1" path="res://assets/themes/paper.tres" id="1_y3iii"]
+[ext_resource type="Texture2D" uid="uid://cs1cgvjdaf6dd" path="res://assets/objects/buffer_cap.svg" id="3_y65av"]
+[ext_resource type="PackedScene" uid="uid://yvais2xr6ga3" path="res://objects/buffer/buffbox.tscn" id="4_mvwqb"]
 
-[node name="Buffer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ex1lh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb8x1"]
+bg_color = Color(1, 0.96, 0.84, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17w1d"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xfov"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="Buffer" type="PanelContainer"]
+offset_right = 111.0
+offset_bottom = 61.0
+theme = ExtResource("1_y3iii")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ex1lh")
 script = ExtResource("1_bu706")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_constants/separation = -3
 
-[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lb8x1")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "NEW BUFFER"
 
-[node name="SlotContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_17w1d")
 
-[node name="SliceContainer0" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2"]
 layout_mode = 2
-flavor = 0
-slice_type = 1
+theme_override_constants/separation = -1
 
-[node name="SliceContainer1" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
-flavor = 0
-slice_type = 1
+texture = ExtResource("3_y65av")
+stretch_mode = 2
 
-[node name="SliceContainer2" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+[node name="SlotContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
-flavor = 0
-slice_type = 1
+theme_override_constants/separation = 0
 
-[node name="SliceContainer3" parent="PanelContainer/VBoxContainer/SlotContainer" instance=ExtResource("2_y65av")]
+[node name="SliceContainer0" parent="VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer" instance=ExtResource("4_mvwqb")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xfov")
 flavor = 0
-slice_type = 1
+
+[node name="SliceContainer1" parent="VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer" instance=ExtResource("4_mvwqb")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xfov")
+flavor = 0
+
+[node name="SliceContainer2" parent="VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer" instance=ExtResource("4_mvwqb")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xfov")
+flavor = 0
+
+[node name="SliceContainer3" parent="VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer" instance=ExtResource("4_mvwqb")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xfov")
+flavor = 0
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_y65av")
+stretch_mode = 2

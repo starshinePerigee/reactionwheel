@@ -6,7 +6,7 @@ func _on_flavor_dropdown_2_flavor_selected(flavor: SliceData.Flavors) -> void:
 
 func _on_flavor_dropdown_3_flavor_selected(flavor: SliceData.Flavors) -> void:
 	$Action.activation_flavor = flavor
-	$Action.check_activation_cost()
+	print($Action.check_activation_cost())
 
 func _on_button_pressed() -> void:
 	$Buffer2.clear_contents()

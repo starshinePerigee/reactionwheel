@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name Slice
 
 func _set_all_values():
 		if not is_node_ready():

@@ -1,0 +1,265 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0jw1yymba1qh"]
+
+[ext_resource type="Texture2D" uid="uid://5fy0seats417" path="res://assets/levels/sputnik.png" id="1_83ob1"]
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="1_pqan5"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="2_cwds2"]
+[ext_resource type="Texture2D" uid="uid://47fpynq53fsf" path="res://assets/levels/lvl10arrows.svg" id="2_i60tw"]
+[ext_resource type="PackedScene" uid="uid://b5w23rk57vsng" path="res://objects/wheel/wheel.tscn" id="3_cwds2"]
+[ext_resource type="Texture2D" uid="uid://bkrqffeasbnw4" path="res://assets/objects/action_auto.svg" id="4_baiwj"]
+[ext_resource type="Texture2D" uid="uid://dvlxhwfhu28i5" path="res://assets/objects/action_auto_selected.svg" id="5_kptvq"]
+[ext_resource type="PackedScene" uid="uid://bpiyrvv1nq7as" path="res://objects/action/action_solo.tscn" id="6_kptvq"]
+
+[node name="Level10" type="Node2D"]
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_top = -122.0
+offset_right = 2400.0
+offset_bottom = 1606.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_83ob1")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 1332.0
+offset_bottom = 859.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 1249.0
+offset_bottom = 812.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 1298.0
+offset_bottom = 859.0
+texture = ExtResource("2_i60tw")
+
+[node name="Spacecraft" parent="." instance=ExtResource("1_pqan5")]
+
+[node name="Buffer" parent="Spacecraft" instance=ExtResource("2_cwds2")]
+offset_left = 439.0
+offset_top = 84.0
+offset_right = 1051.0
+offset_bottom = 145.0
+content_size = 16
+contents = Array[int]([3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3])
+buffer_name = "BUF AA BATTERY"
+
+[node name="Buffer2" parent="Spacecraft" instance=ExtResource("2_cwds2")]
+offset_left = 439.0
+offset_top = 426.0
+offset_right = 907.0
+offset_bottom = 487.0
+content_size = 12
+buffer_name = "BUF BB MAIN BUS"
+
+[node name="Buffer3" parent="Spacecraft" instance=ExtResource("2_cwds2")]
+offset_left = 978.0
+offset_top = 775.0
+offset_right = 1230.0
+offset_bottom = 836.0
+content_size = 6
+buffer_name = "BUF CC DOWNLINK"
+
+[node name="Wheel" parent="Spacecraft" instance=ExtResource("3_cwds2")]
+z_index = 1
+offset_left = 527.0
+offset_top = 205.0
+offset_right = 527.0
+offset_bottom = 205.0
+
+[node name="ActionA" parent="Spacecraft/Wheel" index="0" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+input_buffers = [NodePath("../../Buffer")]
+output_buffer = NodePath("../../Buffer2")
+id_string = "CHARGE"
+cooldown = 2
+turns_waiting = 2
+activation_flavor = 3
+reaction_input = Array[int]([3])
+reaction_output = Array[int]([3, 3])
+
+[node name="ActionB" parent="Spacecraft/Wheel" index="1" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+input_buffers = [NodePath("../../Buffer")]
+output_buffer = NodePath("../../Buffer")
+id_string = "REGENERATE"
+cooldown = 8
+turns_waiting = 8
+activation_flavor = 3
+reaction_input = Array[int]([])
+reaction_output = Array[int]([4, 3, 3])
+
+[node name="ActionC" parent="Spacecraft/Wheel" index="2" node_paths=PackedStringArray("input_buffers")]
+disabled = true
+texture_normal = ExtResource("4_baiwj")
+texture_pressed = ExtResource("5_kptvq")
+input_buffers = [NodePath("../../Buffer")]
+id_string = "DISSIPATE"
+automatic = true
+turns_waiting = 0
+activation_flavor = 1
+reaction_input = Array[int]([4])
+reaction_output = Array[int]([])
+inputs_optional = true
+
+[node name="ActionD" parent="Spacecraft/Wheel" index="3" node_paths=PackedStringArray("input_buffers")]
+disabled = true
+texture_normal = ExtResource("4_baiwj")
+texture_pressed = ExtResource("5_kptvq")
+input_buffers = [NodePath("../../Buffer")]
+automatic = true
+turns_waiting = 0
+activation_flavor = 4
+reaction_input = Array[int]([3, 3])
+reaction_output = Array[int]([])
+inputs_optional = true
+
+[node name="WheelCore" parent="Spacecraft/Wheel" index="4" node_paths=PackedStringArray("input_buffers")]
+mouse_filter = 2
+input_buffers = [NodePath("../../Buffer")]
+starting_contents = Array[int]([3])
+
+[node name="RotatorFrame" parent="Spacecraft/Wheel/WheelCore" index="0"]
+mouse_filter = 2
+
+[node name="Slice90" parent="Spacecraft/Wheel/WheelCore/RotatorFrame" index="0"]
+self_modulate = Color(0.0901961, 0.635294, 0.721569, 1)
+flavor = 3
+
+[node name="VBoxContainer" parent="Spacecraft/Wheel/WheelCore" index="1"]
+mouse_filter = 2
+
+[node name="SliceCapA" parent="Spacecraft/Wheel/WheelCore/VBoxContainer/Frame" index="0"]
+self_modulate = Color(1, 0.960784, 0.839216, 1)
+flavor = 3
+colored = true
+
+[node name="SliceCapB" parent="Spacecraft/Wheel/WheelCore/VBoxContainer/Frame" index="1"]
+self_modulate = Color(0.0901961, 0.635294, 0.721569, 1)
+flavor = 3
+
+[node name="SliceCapC" parent="Spacecraft/Wheel/WheelCore/VBoxContainer/Frame" index="2"]
+self_modulate = Color(1, 1, 1, 1)
+flavor = 1
+
+[node name="SliceCapD" parent="Spacecraft/Wheel/WheelCore/VBoxContainer/Frame" index="3"]
+self_modulate = Color(0.992157, 0.494118, 0.0784314, 1)
+flavor = 4
+
+[node name="Wheel2" parent="Spacecraft" instance=ExtResource("3_cwds2")]
+z_index = 1
+offset_left = 527.0
+offset_top = 561.0
+offset_right = 527.0
+offset_bottom = 561.0
+
+[node name="ActionA" parent="Spacecraft/Wheel2" index="0" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+input_buffers = [NodePath("../../Buffer2")]
+output_buffer = NodePath("../../Buffer3")
+id_string = "SEND PING"
+activation_flavor = 3
+reaction_input = Array[int]([3])
+reaction_output = Array[int]([5])
+
+[node name="ActionB" parent="Spacecraft/Wheel2" index="1" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+input_buffers = [NodePath("../../Buffer2")]
+output_buffer = NodePath("../../Buffer2")
+id_string = "CYCLE HEAT"
+cooldown = 2
+turns_waiting = 2
+activation_flavor = 4
+reaction_input = Array[int]([4, 3])
+reaction_output = Array[int]([3, 4, 4])
+
+[node name="ActionC" parent="Spacecraft/Wheel2" index="2" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+disabled = true
+texture_normal = ExtResource("4_baiwj")
+texture_pressed = ExtResource("5_kptvq")
+input_buffers = [NodePath("../../Buffer2")]
+output_buffer = NodePath("../../Buffer2")
+id_string = "OVERHEAT"
+automatic = true
+turns_waiting = 0
+activation_flavor = 4
+reaction_input = Array[int]([])
+reaction_output = Array[int]([4, 6, 6])
+
+[node name="ActionD" parent="Spacecraft/Wheel2" index="3" node_paths=PackedStringArray("input_buffers", "output_buffer")]
+disabled = true
+texture_normal = ExtResource("4_baiwj")
+texture_pressed = ExtResource("5_kptvq")
+input_buffers = [NodePath("../../Buffer2")]
+output_buffer = NodePath("../../Buffer3")
+id_string = "SYS FAIL"
+automatic = true
+cooldown = 8
+turns_waiting = 0
+activation_flavor = 6
+reaction_input = Array[int]([4, 4, 4, 4])
+reaction_output = Array[int]([6])
+
+[node name="WheelCore" parent="Spacecraft/Wheel2" index="4" node_paths=PackedStringArray("input_buffers")]
+mouse_filter = 2
+input_buffers = [NodePath("../../Buffer2")]
+
+[node name="RotatorFrame" parent="Spacecraft/Wheel2/WheelCore" index="0"]
+mouse_filter = 2
+
+[node name="VBoxContainer" parent="Spacecraft/Wheel2/WheelCore" index="1"]
+mouse_filter = 2
+
+[node name="SliceCapA" parent="Spacecraft/Wheel2/WheelCore/VBoxContainer/Frame" index="0"]
+self_modulate = Color(0.0901961, 0.635294, 0.721569, 1)
+flavor = 3
+
+[node name="SliceCapB" parent="Spacecraft/Wheel2/WheelCore/VBoxContainer/Frame" index="1"]
+self_modulate = Color(0.992157, 0.494118, 0.0784314, 1)
+flavor = 4
+
+[node name="SliceCapC" parent="Spacecraft/Wheel2/WheelCore/VBoxContainer/Frame" index="2"]
+self_modulate = Color(0.992157, 0.494118, 0.0784314, 1)
+flavor = 4
+
+[node name="SliceCapD" parent="Spacecraft/Wheel2/WheelCore/VBoxContainer/Frame" index="3"]
+self_modulate = Color(0.847059, 0, 0, 1)
+flavor = 6
+
+[node name="Control" parent="Spacecraft" instance=ExtResource("6_kptvq")]
+offset_left = 132.0
+offset_top = 267.0
+offset_right = 220.0
+offset_bottom = 331.0
+
+[node name="Action" parent="Spacecraft/Control" index="0" node_paths=PackedStringArray("output_buffer")]
+disabled = true
+texture_normal = ExtResource("4_baiwj")
+texture_pressed = ExtResource("5_kptvq")
+output_buffer = NodePath("../../Buffer2")
+id_string = "SOLAR HEAT"
+automatic = true
+cooldown = 3
+turns_waiting = 0
+activation_flavor = 0
+reaction_input = Array[int]([])
+reaction_output = Array[int]([4])
+
+[node name="Control2" parent="Spacecraft" instance=ExtResource("6_kptvq")]
+offset_left = 266.0
+offset_top = 623.0
+offset_right = 354.0
+offset_bottom = 687.0
+
+[node name="Action" parent="Spacecraft/Control2" index="0"]
+id_string = "WAIT"
+cooldown = 0
+turns_waiting = 0
+reaction_input = Array[int]([])
+reaction_output = Array[int]([])
+
+[editable path="Spacecraft/Wheel"]
+[editable path="Spacecraft/Wheel/WheelCore"]
+[editable path="Spacecraft/Wheel2"]
+[editable path="Spacecraft/Wheel2/WheelCore"]
+[editable path="Spacecraft/Control"]
+[editable path="Spacecraft/Control2"]

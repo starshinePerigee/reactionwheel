@@ -1,36 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://nnwnwamkyluc"]
+[gd_scene load_steps=7 format=3 uid="uid://nnwnwamkyluc"]
 
 [ext_resource type="Script" uid="uid://d03t84tkfk0aw" path="res://objects/wheel/test_wheel/test_wheel.gd" id="1_e2gqm"]
-[ext_resource type="PackedScene" uid="uid://cunsuhq6ishlo" path="res://objects/wheel/wheel.tscn" id="1_m52hx"]
-[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="2_2xmk3"]
+[ext_resource type="PackedScene" uid="uid://cunsuhq6ishlo" path="res://objects/wheel/wheel_core.tscn" id="1_m52hx"]
 [ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="4_cqrck"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="4_kjwfj"]
+[ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="5_una5m"]
+[ext_resource type="Texture2D" uid="uid://b2x0i66umhlsf" path="res://assets/icons/debug.svg" id="6_vndi5"]
 
 [node name="TestWheel" type="Node2D"]
 script = ExtResource("1_e2gqm")
 
-[node name="Wheel" parent="." instance=ExtResource("1_m52hx")]
-offset_left = 218.0
-offset_top = 86.0
-offset_right = 400.0
-offset_bottom = 113.0
-
-[node name="Slice1" parent="." instance=ExtResource("2_2xmk3")]
-offset_left = 439.0
-offset_top = 122.0
-offset_right = 480.0
-offset_bottom = 163.0
-
-[node name="Slice2" parent="." instance=ExtResource("2_2xmk3")]
-offset_left = 441.0
+[node name="WheelCore" parent="." node_paths=PackedStringArray("input_buffers") instance=ExtResource("1_m52hx")]
+offset_left = 157.0
 offset_top = 245.0
-offset_right = 482.0
-offset_bottom = 286.0
+offset_right = 339.0
+offset_bottom = 272.0
+input_buffers = [NodePath("../Buffer")]
+starting_contents = Array[int]([])
 
 [node name="LoadButton" type="Button" parent="."]
-offset_left = 129.0
-offset_top = 145.0
-offset_right = 194.0
-offset_bottom = 176.0
+offset_left = 157.0
+offset_top = 141.0
+offset_right = 224.0
+offset_bottom = 172.0
 text = "Load ->"
 
 [node name="FlavorDropdown" parent="." instance=ExtResource("4_cqrck")]
@@ -40,11 +32,35 @@ offset_right = 22.0
 offset_bottom = 86.0
 
 [node name="RotateButton" type="Button" parent="."]
-offset_left = 275.0
-offset_top = 378.0
-offset_right = 339.0
-offset_bottom = 409.0
+offset_left = 576.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 303.0
 text = "Rotate!"
+
+[node name="Buffer" parent="." instance=ExtResource("4_kjwfj")]
+offset_left = 345.0
+offset_top = 100.0
+offset_right = 525.0
+offset_bottom = 161.0
+
+[node name="Flavor" parent="." instance=ExtResource("5_una5m")]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 405.0
+offset_top = 282.0
+offset_right = 437.0
+offset_bottom = 314.0
+texture = ExtResource("6_vndi5")
+variant = 2
+
+[node name="Flavor2" parent="." instance=ExtResource("5_una5m")]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 405.0
+offset_top = 336.0
+offset_right = 437.0
+offset_bottom = 368.0
+texture = ExtResource("6_vndi5")
+variant = 2
 
 [connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="RotateButton" to="." method="_on_button_pressed"]

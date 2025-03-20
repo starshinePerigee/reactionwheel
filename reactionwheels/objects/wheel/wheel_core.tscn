@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://cunsuhq6ishlo"]
+
+[ext_resource type="Theme" uid="uid://c3udww5em8di1" path="res://assets/themes/paper.tres" id="1_3xqjm"]
+[ext_resource type="Script" uid="uid://diem7a8j835xc" path="res://objects/wheel/wheel_core.gd" id="2_cbsk7"]
+[ext_resource type="Texture2D" uid="uid://r1106o4024sa" path="res://assets/objects/wheel_spinner.svg" id="3_86luw"]
+[ext_resource type="PackedScene" uid="uid://lywkqcthlfcc" path="res://objects/slice/slice_90.tscn" id="4_im0bo"]
+[ext_resource type="Texture2D" uid="uid://dspm8edhv1i6h" path="res://assets/objects/wheel_base.svg" id="5_hks4m"]
+[ext_resource type="PackedScene" uid="uid://bfbsmkqcskplt" path="res://objects/slice/slice_wheelcap_a.tscn" id="6_hks4m"]
+[ext_resource type="PackedScene" uid="uid://clilm6adxg8tv" path="res://objects/slice/slice_wheelcap_b.tscn" id="7_22hic"]
+[ext_resource type="PackedScene" uid="uid://cmyu701swo5pq" path="res://objects/slice/slice_wheelcap_c.tscn" id="8_kmwhf"]
+[ext_resource type="PackedScene" uid="uid://b2q3v5akw0dju" path="res://objects/slice/slice_wheelcap_d.tscn" id="9_7q5pd"]
+
+[node name="WheelCore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -966.0
+offset_bottom = -712.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3xqjm")
+script = ExtResource("2_cbsk7")
+display_name = "WHL 100 TEST WHEEL"
+
+[node name="RotatorFrame" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 19.0
+offset_right = 218.0
+offset_bottom = 137.0
+pivot_offset = Vector2(59, 59)
+texture = ExtResource("3_86luw")
+
+[node name="Slice90" parent="RotatorFrame" instance=ExtResource("4_im0bo")]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 117.0
+rotation = 3.14159
+flavor = 0
+
+[node name="Slice91" parent="RotatorFrame" instance=ExtResource("4_im0bo")]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 117.0
+rotation = 4.71239
+flavor = 0
+
+[node name="Slice92" parent="RotatorFrame" instance=ExtResource("4_im0bo")]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 117.0
+flavor = 0
+
+[node name="Slice93" parent="RotatorFrame" instance=ExtResource("4_im0bo")]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 117.0
+rotation = 1.5708
+flavor = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = -3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "WHL 100 TEST WHEEL"
+vertical_alignment = 1
+
+[node name="Frame" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_hks4m")
+stretch_mode = 2
+
+[node name="SliceCapA" parent="VBoxContainer/Frame" instance=ExtResource("6_hks4m")]
+z_index = -1
+layout_mode = 0
+offset_left = 84.0
+offset_top = 3.0
+offset_right = 160.0
+offset_bottom = 61.0
+
+[node name="SliceCapB" parent="VBoxContainer/Frame" instance=ExtResource("7_22hic")]
+z_index = -1
+layout_mode = 0
+offset_left = 158.0
+offset_right = 234.0
+
+[node name="SliceCapC" parent="VBoxContainer/Frame" instance=ExtResource("8_kmwhf")]
+self_modulate = Color(1, 0.960784, 0.839216, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 158.0
+offset_top = 59.0
+offset_right = 234.0
+offset_bottom = 117.0
+
+[node name="SliceCapD" parent="VBoxContainer/Frame" instance=ExtResource("9_7q5pd")]
+self_modulate = Color(1, 0.960784, 0.839216, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 84.0
+offset_top = 59.0
+offset_right = 160.0
+offset_bottom = 117.0

@@ -4,37 +4,35 @@ class_name Buffer
 
 signal slice_buffer_overflow(slice: SliceData.Flavors)
 
+var slice_buffbox = preload("res://objects/buffer/buffbox.tscn")
+
 #region UI and export
-var slice_slot = preload("res://objects/slice/slice.tscn")
+@onready var slot_container = $VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer
 
-func verify_ready():
-	if not is_node_ready():
-		await ready
-
-@onready var slot_container = $PanelContainer/VBoxContainer/SlotContainer
+func _set_children_size():
+	var cont_children = slot_container.get_children()
+	var old_size = len(cont_children)
+	if old_size > content_size:
+		for i in range(old_size, content_size, -1):
+			var to_pop = cont_children[i - 1]
+			slot_container.remove_child(to_pop)
+			to_pop.queue_free()
+	elif old_size < content_size:
+		for i in range(content_size - old_size):
+			var segment = slice_buffbox.instantiate()
+			segment.flavor = SliceData.Flavors.NO_SLICE
+			segment.name = "SliceContainer%d" % (old_size + i)
+			slot_container.add_child(segment)
+			segment.owner = get_tree().edited_scene_root
 
 @export var content_size: int = 4:
 	set(value):
 		content_size = value
 		if content_size < 0:
 			content_size = 0
-		await verify_ready()
-		if slot_container != null:
-			var cont_children = slot_container.get_children()
-			var old_size = len(cont_children)
-			if old_size > content_size:
-				for i in range(old_size, content_size, -1):
-					var to_pop = cont_children[i - 1]
-					slot_container.remove_child(to_pop)
-					to_pop.queue_free()
-			elif old_size < content_size:
-				for i in range(content_size - old_size):
-					var segment = slice_slot.instantiate()
-					segment.slice_type = Slice.SliceTypes.BUFFBOX
-					segment.flavor = SliceData.Flavors.NO_SLICE
-					segment.name = "SliceContainer%d" % (old_size + i)
-					slot_container.add_child(segment)
-					segment.owner = get_tree().edited_scene_root
+		if not is_node_ready():
+			await ready
+		_set_children_size()
 
 @export var contents: Array[SliceData.Flavors] = []:
 	set(value):
@@ -42,31 +40,34 @@ func verify_ready():
 			contents = value.slice(0, content_size)
 		else:
 			contents = value
-		await verify_ready()
+		if not is_node_ready():
+			await ready
 		var cont_children = slot_container.get_children()
 		for i in len(contents):
-			cont_children[i].flavor = contents[i]
+			cont_children[-i-1].flavor = contents[i]
 		for i in range(len(contents), content_size, 1):
-			cont_children[i].flavor = SliceData.Flavors.NO_SLICE
+			cont_children[-i-1].flavor = SliceData.Flavors.NO_SLICE
 
 @export var buffer_name: String = "NEW BUFFER":
 	set(value):
 		buffer_name = value
-		await verify_ready()
-		$PanelContainer/VBoxContainer/NameLabel.text = buffer_name
+		if not is_node_ready():
+			await ready
+		$VBoxContainer/PanelContainer/NameLabel.text = buffer_name
 #endregion
 
 #region operating functions
 func _ready() -> void:
+	_set_children_size()
 	prune_contents()
 #endregion
 
 #region functional functions
-func prune_contents():
+func prune_contents() -> void:
 	"""Remove all NO_SLICE slices from this"""
 	if contents.find(SliceData.Flavors.NO_SLICE) == -1:
 		return
-	var new_contents = []
+	var new_contents: Array[SliceData.Flavors] = []
 	for slice in contents:
 		if slice != SliceData.Flavors.NO_SLICE:
 			new_contents.append(slice)
@@ -88,7 +89,7 @@ func add_slice(slice: SliceData.Flavors) -> void:
 		return
 	var update_index = len(contents)
 	contents.append(slice)
-	slot_container.get_children()[update_index].flavor = slice
+	slot_container.get_children()[-update_index-1].flavor = slice
 	
 func pop_slice(loc: int = 0) -> SliceData.Flavors:
 	if len(contents) <= loc:

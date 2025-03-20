@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://lpuyvufmuwmy"]
+[gd_scene load_steps=6 format=3 uid="uid://lpuyvufmuwmy"]
 
 [ext_resource type="Script" uid="uid://3cfo5ypmxr8s" path="res://objects/buffer/test_buffer/test_buffer.gd" id="1_1gtb8"]
 [ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="2_tttqo"]
-[ext_resource type="PackedScene" uid="uid://bcjsl7506bdq3" path="res://objects/slice/slice.tscn" id="3_tttqo"]
+[ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="3_4e7wd"]
 [ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="4_1nwmy"]
+[ext_resource type="Texture2D" uid="uid://b2x0i66umhlsf" path="res://assets/icons/debug.svg" id="4_idmjg"]
 
 [node name="TestBuffer" type="Node2D"]
 script = ExtResource("1_1gtb8")
@@ -35,13 +36,14 @@ offset_right = 128.0
 offset_bottom = 271.0
 text = "Last Pop:"
 
-[node name="Slice" parent="PopLabel" instance=ExtResource("3_tttqo")]
-offset_left = 76.4
-offset_top = -7.09999
-offset_right = 117.4
-offset_bottom = 33.9
-flavor = 0
-slice_type = 1
+[node name="Flavor" parent="PopLabel" instance=ExtResource("3_4e7wd")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 76.0
+offset_top = -8.0
+offset_right = 108.0
+texture = ExtResource("4_idmjg")
+variant = 2
 
 [node name="OverflowLabel" type="Label" parent="."]
 offset_left = 247.0
@@ -50,13 +52,14 @@ offset_right = 359.0
 offset_bottom = 271.0
 text = "Last Overflow:"
 
-[node name="Slice" parent="OverflowLabel" instance=ExtResource("3_tttqo")]
-offset_left = 117.0
-offset_top = -7.0
-offset_right = 158.0
-offset_bottom = 34.0
-flavor = 0
-slice_type = 1
+[node name="Flavor" parent="OverflowLabel" instance=ExtResource("3_4e7wd")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 112.0
+offset_top = -8.0
+offset_right = 144.0
+texture = ExtResource("4_idmjg")
+variant = 2
 
 [node name="PopButton" type="Button" parent="."]
 offset_left = 147.0

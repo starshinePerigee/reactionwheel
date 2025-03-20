@@ -2,10 +2,10 @@ extends Node2D
 
 
 func _on_button_pressed() -> void:
-	$Wheel.rotation_position += 1
-	$Slice1.flavor = $Wheel.get_slice_from_pos(1).flavor
-	$Slice2.flavor = $Wheel.get_slice_from_pos(2).flavor
-
-
+	$WheelCore.do_turn()
+	$Flavor.flavor = $WheelCore.get_flavor(1)
+	$Flavor2.flavor = $WheelCore.get_flavor(2)
+	
 func _on_load_button_pressed() -> void:
-	$Wheel.get_slice_from_pos(0).flavor = $FlavorDropdown.flavor
+	$Buffer.add_slice($FlavorDropdown.flavor)
+	

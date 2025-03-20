@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpiyrvv1nq7as"]
+
+[ext_resource type="Theme" uid="uid://c3udww5em8di1" path="res://assets/themes/paper.tres" id="1_ayw20"]
+[ext_resource type="PackedScene" uid="uid://cykb38cjy1rp6" path="res://objects/action/action.tscn" id="2_um6ja"]
+
+[node name="Control" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1358.0
+offset_bottom = -842.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ayw20")
+
+[node name="Action" parent="." instance=ExtResource("2_um6ja")]
+layout_mode = 2

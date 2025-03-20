@@ -26,6 +26,10 @@ window/stretch/mode="canvas_items"
 
 movie_writer/movie_file="C:/git/captures/reactionwheel_capture.avi"
 
+[gui]
+
+theme/custom_font="uid://0lwlh6nugftu"
+
 [input]
 
 click={

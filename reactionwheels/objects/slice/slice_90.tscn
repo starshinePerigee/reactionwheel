@@ -19,10 +19,10 @@ script = ExtResource("1_0o8cu")
 
 [node name="Flavor" parent="." instance=ExtResource("2_0o8cu")]
 layout_mode = 0
-offset_left = 42.0
+offset_left = 8.0
 offset_top = 25.0
-offset_right = 66.0
+offset_right = 32.0
 offset_bottom = 49.0
-rotation = 2.35619
+rotation = -0.785398
 texture = ExtResource("3_tc8xh")
 variant = 1

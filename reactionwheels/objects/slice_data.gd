@@ -27,24 +27,26 @@ class FlavorDef:
 #endregion
 
 #region instances
-static var NO_SLICE = FlavorDef.new("no_slice", Color("333333"))
+static var NO_SLICE = FlavorDef.new("no_slice", Color("FFF5D6"))
+static var ANY_SLICE = FlavorDef.new("any_slice", Color("FFFFFF"))
 static var DEBUG = FlavorDef.new("debug", Color("d63384"))
 static var POWER = FlavorDef.new("power", Color("17a2b8"))
 static var HEAT = FlavorDef.new("heat", Color("fd7e14"))
-static var SIGNAL = FlavorDef.new("signal", Color("FFFFFF"))
-static var DAMAGE = FlavorDef.new("damage", Color("FFFFFF"))
-static var STAR = FlavorDef.new("success", Color("FFFFFF"))
+static var DOWNLINK = FlavorDef.new("downlink", Color("8660CB"))
+static var DAMAGE = FlavorDef.new("damage", Color("d80000"))
+static var STAR = FlavorDef.new("success", Color("3cb1c3"))
 #endregion
 
 #region global instances
-enum Flavors {NO_SLICE, DEBUG, POWER, HEAT, SIGNAL, DAMAGE, STAR}
+enum Flavors {NO_SLICE, ANY_SLICE, DEBUG, POWER, HEAT, DOWNLINK, DAMAGE, STAR}
 
 static var FLAVOR_DICT = {
 	Flavors.NO_SLICE: NO_SLICE,
+	Flavors.ANY_SLICE: ANY_SLICE,
 	Flavors.DEBUG: DEBUG,
 	Flavors.POWER: POWER,
 	Flavors.HEAT: HEAT,
-	Flavors.SIGNAL: SIGNAL,
+	Flavors.DOWNLINK: DOWNLINK,
 	Flavors.DAMAGE: DAMAGE,
 	Flavors.STAR: STAR
 }

@@ -1,2 +1,12 @@
-Flame by Kick from <a href="https://thenounproject.com/browse/icons/term/flame/" target="_blank" title="Flame Icons">Noun Project</a> (CC BY 3.0)
-up arrow by Lanicon from <a href="https://thenounproject.com/browse/icons/term/up-arrow/" target="_blank" title="up arrow Icons">Noun Project</a> (CC BY 3.0)
+ICONS:
+All Icons are from the Noun Project and are CC BY 3.0
+
+Flame by Kick
+up arrow by Lanicon
+Asterisk by iconeu
+signal by Uswa KDT
+break by Adrien Coquet
+stars by Aswell Studio
+
+FONTS:
+Routed Gothic via https://webonastick.com/fonts/routed-gothic/ (OFL) - thanks to Hen for finding this!

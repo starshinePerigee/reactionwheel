@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="75.5"
+   width="74.5"
    height="57.5"
-   viewBox="0 0 75.5 57.5"
+   viewBox="0 0 74.5 57.5"
    version="1.1"
    id="svg1"
    xml:space="preserve"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="5.7421875"
-     inkscape:cx="20.37551"
-     inkscape:cy="55.118367"
+     inkscape:zoom="16.241359"
+     inkscape:cx="11.7601"
+     inkscape:cy="29.831248"
      inkscape:window-width="1680"
      inkscape:window-height="979"
      inkscape:window-x="-8"
@@ -40,11 +40,25 @@
          width="21.483582"
          height="21.483582"
          x="13.258209"
-         y="13.258209" /></clipPath></defs><g
+         y="13.258209" /></clipPath><filter
+       id="mask-powermask-path-effect2_inverse"
+       inkscape:label="filtermask-powermask-path-effect2"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50"><feColorMatrix
+         id="mask-powermask-path-effect2_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" /><feColorMatrix
+         id="mask-powermask-path-effect2_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" /></filter></defs><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-180.5,-198.5)"><path
-       d="M 180.5,198.5 V 256 h 18 A 57.5,57.5 0 0 1 256,198.5 Z"
-       style="fill:#ffffff;stroke-width:3;stroke-miterlimit:13.1;fill-opacity:1"
+       d="M 179.5,198.5 V 256 h 18 A 57.5,57.5 0 0 1 255,198.5 Z"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:3;stroke-miterlimit:13.1"
        id="path10" /></g></svg>
