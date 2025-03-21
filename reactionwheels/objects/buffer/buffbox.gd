@@ -1,6 +1,9 @@
 @tool
 extends PanelContainer
 
+func _ready():
+	$SliceBuffbox.color = false
+
 @export var flavor: SliceData.Flavors = SliceData.Flavors.DEBUG:
 	set(value):
 		flavor = value

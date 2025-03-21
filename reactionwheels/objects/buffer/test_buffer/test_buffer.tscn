@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://lpuyvufmuwmy"]
 
 [ext_resource type="Script" uid="uid://3cfo5ypmxr8s" path="res://objects/buffer/test_buffer/test_buffer.gd" id="1_1gtb8"]
-[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="2_tttqo"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="2_tttqo"]
 [ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="3_4e7wd"]
 [ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="4_1nwmy"]
 [ext_resource type="Texture2D" uid="uid://b2x0i66umhlsf" path="res://assets/icons/debug.svg" id="4_idmjg"]
@@ -14,6 +14,9 @@ offset_left = 57.0
 offset_top = 117.0
 offset_right = 57.0
 offset_bottom = 117.0
+content_size = 8
+row_count = 2
+contents = Array[int]([2, 3])
 
 [node name="LineEdit" type="LineEdit" parent="."]
 offset_left = 111.0

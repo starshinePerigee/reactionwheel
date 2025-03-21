@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbyv5uxwrtjus"]
+[gd_scene load_steps=10 format=3 uid="uid://dbyv5uxwrtjus"]
 
+[ext_resource type="Texture2D" uid="uid://bhufiplantj7u" path="res://assets/levels/sputnikbg.png" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d0jw1yymba1qh" path="res://stages/level_10.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://7mg4qf8niavf" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://mgkfg875lgsh" path="res://assets/levels/sputnikout.png" id="3_h2yge"]
+[ext_resource type="Theme" uid="uid://c3udww5em8di1" path="res://assets/themes/paper.tres" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bpiyrvv1nq7as" path="res://objects/action_solo.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://0dpb5le20pgt" path="res://stages/t_3.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://d1ynrl2f4k0xh" path="res://stages/t_4.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://de7hv6rcqyrd0" path="res://stages/t_5.tscn" id="9_kek77"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,5 +17,130 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lquwl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -323.0
+offset_top = 220.0
+offset_right = -212.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Sample"
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0xm2m")
+
+[node name="s1" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="s1"]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 86.0
+offset_right = 1305.0
+offset_bottom = 682.0
+texture = ExtResource("3_h2yge")
+
+[node name="Label" type="Label" parent="s1"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 164.0
+offset_right = 715.0
+offset_bottom = 343.0
+theme_override_font_sizes/font_size = 87
+text = "REACTION
+WHEELS"
+horizontal_alignment = 1
+
+[node name="S1Button" type="Button" parent="s1"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 598.0
+offset_right = 648.0
+offset_bottom = 654.0
+theme = ExtResource("4_7mycd")
+theme_override_font_sizes/font_size = 48
+text = "START GAME"
+
+[node name="Label2" type="Label" parent="s1"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 347.0
+offset_right = 715.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 32
+text = "WHEELJAM 2025 
+PROTOTYPE"
+horizontal_alignment = 1
+
+[node name="s2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="s2"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 249.0
+offset_right = 692.0
+offset_bottom = 281.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "This is an action"
+
+[node name="S2Action" parent="s2" instance=ExtResource("5_7mycd")]
+layout_mode = 1
+offset_left = 846.0
+offset_top = 279.0
+offset_right = 894.0
+offset_bottom = 303.0
+identifier = "HELLO FRIEND"
+output_flavors = Array[int]([7])
+
+[node name="Label2" type="Label" parent="s2"]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 427.0
+offset_right = 911.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Actions do things.
+This one takes you to the
+next stage of the tutorial.
+
+Click it!"
+
+[node name="Line2D" type="Line2D" parent="s2"]
+position = Vector2(379, 139)
+points = PackedVector2Array(319, 131, 458, 170)
+width = 5.0
+default_color = Color(1, 0.960784, 0.839216, 1)
+
+[node name="s3" parent="." instance=ExtResource("6_272bh")]
+visible = false
 
 [node name="Level10" parent="." instance=ExtResource("1_ig7tw")]
+visible = false
+
+[node name="T4" parent="." instance=ExtResource("8_5vw27")]
+visible = false
+
+[node name="T5" parent="." instance=ExtResource("9_kek77")]
+visible = false
+position = Vector2(49, -8)
+
+[connection signal="pressed" from="s1/S1Button" to="." method="_on_s_1_button_pressed"]
+[connection signal="fired" from="s2/S2Action" to="." method="_on_s_2_action_fired"]
+[connection signal="complete" from="s3" to="." method="_on_s_3_complete"]
+[connection signal="restart" from="T4" to="." method="_on_t_4_restart"]
+[connection signal="success" from="T4" to="." method="_on_t_4_success"]
+[connection signal="success" from="T5" to="." method="_on_t_5_success"]

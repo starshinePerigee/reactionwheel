@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0eawbjw5wu4n"]
+
+[ext_resource type="Texture2D" uid="uid://bhufiplantj7u" path="res://assets/levels/sputnikbg.png" id="1_rwbwl"]
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="2_gncuc"]
+
+[node name="Template" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -255.0
+offset_top = 167.0
+offset_right = -144.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Sample"
+metadata/_edit_use_anchors_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_rwbwl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacecraft" parent="." instance=ExtResource("2_gncuc")]
+visible = true

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://n6os6n6vg5kf"]
+
+[ext_resource type="Script" uid="uid://cu5vqbscdi3qn" path="res://objects/buffer/buffer.gd" id="1_bu706"]
+[ext_resource type="Theme" uid="uid://c3udww5em8di1" path="res://assets/themes/paper.tres" id="1_y3iii"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex1lh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Buffer" type="PanelContainer"]
+offset_right = 111.0
+offset_bottom = 55.0
+theme = ExtResource("1_y3iii")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex1lh")
+script = ExtResource("1_bu706")
+content_size = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "NEW BUFFER"
+
+[node name="PrimaryContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2

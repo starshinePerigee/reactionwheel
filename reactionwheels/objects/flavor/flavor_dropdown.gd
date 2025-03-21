@@ -26,8 +26,8 @@ func _on_flavors_item_selected(index: int) -> void:
 	flavor = new_flavor
 	flavor_selected.emit(new_flavor)
 
-func get_flavor(index: int = 0) -> SliceData.Flavors:
-	return await flavor
+func get_flavor(_index: int = 0) -> SliceData.Flavors:
+	return flavor
 	
-func set_flavor(index: int = 0, flavor_: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:
+func set_flavor(_index: int = 0, flavor_: SliceData.Flavors = SliceData.Flavors.NO_SLICE) -> void:
 	self.flavor = flavor_

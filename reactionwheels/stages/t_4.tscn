@@ -1,0 +1,221 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1ynrl2f4k0xh"]
+
+[ext_resource type="Texture2D" uid="uid://bhufiplantj7u" path="res://assets/levels/sputnikbg.png" id="1_ir8cm"]
+[ext_resource type="Script" uid="uid://c8e2deh521gsr" path="res://stages/t_4.gd" id="1_yjher"]
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="2_y1p45"]
+[ext_resource type="PackedScene" uid="uid://bpiyrvv1nq7as" path="res://objects/action_solo.tscn" id="3_kil8k"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="4_yjher"]
+
+[node name="T4" type="Node2D"]
+script = ExtResource("1_yjher")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 161.0
+offset_top = 120.0
+offset_right = 578.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Actions can convert from one 
+flavor of slice to another.
+
+
+The top half of an action is the
+input, which is consumed from
+its input buffer.
+
+The bottom half is its output,
+which is produced into its output
+buffer."
+metadata/_edit_use_anchors_ = true
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(398, 547, 445, 547)
+width = 5.0
+default_color = Color(0.0901961, 0.635294, 0.721569, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2(133, 0)
+points = PackedVector2Array(398, 548, 450, 548)
+width = 5.0
+default_color = Color(0.992157, 0.494118, 0.0784314, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(294, -62)
+points = PackedVector2Array(466, 441, 467, 599)
+width = 5.0
+default_color = Color(0.0901961, 0.635294, 0.721569, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="."]
+position = Vector2(488, 0)
+points = PackedVector2Array(369, 549, 597, 549)
+width = 5.0
+default_color = Color(2.02149e-06, 0.763663, 0.604542, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = -255.0
+offset_top = 167.0
+offset_right = -144.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Sample"
+metadata/_edit_use_anchors_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+visible = false
+offset_right = 1440.0
+offset_bottom = 900.0
+texture = ExtResource("1_ir8cm")
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacecraft" parent="." instance=ExtResource("2_y1p45")]
+visible = true
+
+[node name="A1" parent="Spacecraft" node_paths=PackedStringArray("input_buffers", "output_buffer") instance=ExtResource("3_kil8k")]
+offset_left = 445.0
+offset_top = 515.0
+offset_right = 533.0
+offset_bottom = 579.0
+input_buffers = [NodePath("../Charge")]
+identifier = "HEAT"
+input_flavors = Array[int]([3])
+output_flavors = Array[int]([4])
+output_buffer = NodePath("../Workspace")
+cooldown = 2
+
+[node name="A2" parent="Spacecraft" node_paths=PackedStringArray("output_buffer") instance=ExtResource("3_kil8k")]
+offset_left = 711.0
+offset_top = 316.0
+offset_right = 799.0
+offset_bottom = 380.0
+identifier = "POWER"
+output_flavors = Array[int]([3, 3])
+output_buffer = NodePath("../Workspace")
+cooldown = 3
+
+[node name="A3" parent="Spacecraft" node_paths=PackedStringArray("input_buffers", "output_buffer") instance=ExtResource("3_kil8k")]
+offset_left = 930.0
+offset_top = 513.0
+offset_right = 1018.0
+offset_bottom = 577.0
+input_buffers = [NodePath("../Workspace")]
+identifier = "HAPPINESS"
+input_flavors = Array[int]([3, 4])
+output_flavors = Array[int]([7])
+output_buffer = NodePath("../Output")
+cooldown = 2
+
+[node name="Charge" parent="Spacecraft" instance=ExtResource("4_yjher")]
+offset_left = 181.0
+offset_top = 503.0
+offset_right = 399.0
+offset_bottom = 592.0
+content_size = 12
+row_count = 2
+contents = Array[int]([3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3])
+buffer_name = "BUF-BB BATTERY"
+
+[node name="Workspace" parent="Spacecraft" instance=ExtResource("4_yjher")]
+offset_left = 582.0
+offset_top = 520.0
+offset_right = 883.0
+offset_bottom = 575.0
+content_size = 8
+buffer_name = "BUF-CC WORKSPACE"
+
+[node name="Output" parent="Spacecraft" instance=ExtResource("4_yjher")]
+offset_left = 1083.0
+offset_top = 513.0
+offset_right = 1252.0
+offset_bottom = 568.0
+content_size = 4
+buffer_name = "BUF-DD OUTPUT"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 582.0
+offset_top = 624.0
+offset_right = 850.0
+offset_bottom = 685.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Also, these reactions
+have cooldowns! "
+metadata/_edit_use_anchors_ = true
+
+[node name="Line2D5" type="Line2D" parent="."]
+position = Vector2(294, -62)
+points = PackedVector2Array(297, 470, 407, 430)
+width = 5.0
+default_color = Color(1, 0.960784, 0.839216, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D6" type="Line2D" parent="."]
+position = Vector2(294, -62)
+points = PackedVector2Array(266, 365, 408, 397)
+width = 5.0
+default_color = Color(1, 0.960784, 0.839216, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 883.0
+offset_top = 120.0
+offset_right = 1324.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "There's no way to check which
+buffers go with an action, 
+except by reading the diagram.
+
+Sorry! That's games jamez babeyy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 133.0
+offset_top = 624.0
+offset_right = 397.0
+offset_bottom = 781.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "This battery can't
+be recharged!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 1054.0
+offset_top = 624.0
+offset_right = 1322.0
+offset_bottom = 685.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Produce four stars
+to continue."
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 399.0
+offset_top = 724.0
+offset_right = 482.0
+offset_bottom = 748.0
+text = "RESTART"
+
+[connection signal="turn_ended" from="Spacecraft" to="." method="_on_spacecraft_turn_ended"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -15,45 +15,29 @@ func verify_ready():
 	if not is_node_ready():
 		await ready
 
-#region Exports
-@export_group("Links")
-@export var activation_object: Node
-@export var activation_index: int
-@export var activation_slice: Slice:
-	set(value):
-		activation_slice = value
-		await verify_ready()
-		update_activation_slice()
-@export var input_buffers: Array[Buffer]
-@export var output_buffer: Buffer
-
-@export_group("Action Properties")
-
-func _configure_automatic():
-	await verify_ready()
+func rebuild():
+	$TopLabel.text = id_string
+	$TopBox/TopLine.contents = reaction_input
+	$TopBox/TopLine.optional = inputs_optional
+	$BottomBox/BottomLine.contents = reaction_output
+	
 	if automatic:
 		texture_normal = texture_auto
 		texture_pressed = texture_auto_sel
-		$TopLabel.text = "AUTO %s" % id_string
+		#$TopLabel.text = "AUTO %s" % id_string
 	else:
 		texture_normal = texture_manual
 		texture_pressed = texture_manual_sel
-		$TopLabel.text = id_string
 		#$TopLabel.text = "ACT %s" % id_string
-
-@export var id_string: String = "000":
-	set(value):
-		id_string = value
-		_configure_automatic()
-
-@export var automatic: bool = false:
-	set(value):
-		automatic = value
-		_configure_automatic()
-		reset_turns_waiting()
-
+			
+	reset_turns_waiting()
+	update_progress_indicators()
+	action_post()
+	update_activation_slice()
+	
 func update_progress_indicators():
-	await verify_ready()
+	if not is_node_ready():
+		await ready
 	if turns_waiting >= cooldown:
 		disabled = false
 		$ProgressWipe.position = Vector2(0, 0)
@@ -68,49 +52,51 @@ func update_progress_indicators():
 		progress_pos = max(progress_pos, 0)
 		$ProgressWipe.position = Vector2(progress_pos, 0)
 		$ProgressWipe.visible = true
-		$BotLabel.text = "%d/%d" % [turns_waiting, cooldown]
+		if automatic:
+			$BotLabel.text = "AUTO %d/%d" % [turns_waiting, cooldown]
+		else:
+			$BotLabel.text = "READYING %d/%d" % [turns_waiting, cooldown]
 
-@export var cooldown: int = 4:
-	set(value):
-		cooldown = value
-		update_progress_indicators()
-		reset_turns_waiting()
-
-@export var turns_waiting: int = 0:
-	set(value):
-		turns_waiting = value
-		update_progress_indicators()
-#
 func reset_turns_waiting() -> void:
 	if automatic:
 		turns_waiting = 0
 	else:
 		turns_waiting = cooldown
 
+func update_activation_slice(skew: int = 0):
+	if not is_node_ready():
+		await ready
+	if activation_slice:
+		activation_slice.flavor = activation_flavor
+		activation_slice.color = !await check_activation_cost(skew)
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		rebuild()
+
+func _ready() -> void:
+	rebuild()
+
+#region Exports
+@export_group("Links")
+@export var activation_object: Node
+@export var activation_index: int
+@export var activation_slice: Slice
+@export var input_buffers: Array[Buffer]
+@export var output_buffer: Buffer
+
+@export_group("Action Properties")
+@export var id_string: String = "000"
+@export var automatic: bool = false
+@export var cooldown: int = 4
+@export var turns_waiting: int = 0
+
 @export_group("Reaction")
-@export var activation_flavor: SliceData.Flavors = SliceData.Flavors.DEBUG:
-	set(value):
-		activation_flavor = value
-		await verify_ready()
-		update_activation_slice()
-
-@export var reaction_input: Array[SliceData.Flavors] = [SliceData.Flavors.DEBUG]:
-	set(value):
-		reaction_input = value
-		await verify_ready()
-		$TopBox/TopLine.contents = reaction_input
+@export var activation_flavor: SliceData.Flavors = SliceData.Flavors.NO_SLICE
+@export var reaction_input: Array[SliceData.Flavors] = []
 		
-@export var reaction_output: Array[SliceData.Flavors] = [SliceData.Flavors.DEBUG]:
-	set(value):
-		reaction_output = value
-		await verify_ready()
-		$BottomBox/BottomLine.contents = reaction_output
-
-@export var inputs_optional: bool = false:
-	set(value):
-		inputs_optional = value
-		await verify_ready()
-		$TopBox/TopLine.optional = inputs_optional
+@export var reaction_output: Array[SliceData.Flavors] = []
+@export var inputs_optional: bool = false
 #endregion
 
 #region utility and upkeep
@@ -118,39 +104,26 @@ var action_ready: bool:
 	get():
 		return turns_waiting >= cooldown
 
-func _ready() -> void:
-	reset_turns_waiting()
-	update_activation_slice()
-
 func _on_action_body_pressed() -> void:
 	clicked.emit()
 	if not automatic:
 		if await full_activation():
 			manual_completed.emit()
 
-func check_activation_cost() -> bool:
+func check_activation_cost(skew: int = 0) -> bool:
 	"""Checks if the activation cost (just slice:slice) is met."""
 	if activation_object == null:
 		return true
 	if not activation_object.is_node_ready():
 		await activation_object.ready
-	if activation_object.get_flavor(activation_index) == activation_flavor:
+	if activation_object.get_flavor(activation_index - skew) == activation_flavor:
 		return true
 	if (
 		activation_flavor == SliceData.Flavors.ANY_SLICE and
-		activation_object.get_flavor(activation_index) != SliceData.Flavors.NO_SLICE
+		activation_object.get_flavor(activation_index - skew) != SliceData.Flavors.NO_SLICE
 	):
 		return true
 	return false
-
-func update_activation_slice():
-	await verify_ready()
-	if activation_slice:
-		activation_slice.flavor = activation_flavor
-		activation_slice.colored = await check_activation_cost()
-
-func update():
-	update_activation_slice()
 #endregion
 
 #region core logic
@@ -164,23 +137,20 @@ func do_activation():
 				if flavor in buffer.contents:
 					buffer.remove_flavor(flavor)
 					continue
-	if reaction_output:
+	if reaction_output and output_buffer:
 		for flavor in reaction_output:
 			output_buffer.add_slice(flavor)
 	activated.emit()
 
-func do_turn():
+func action_pre():
 	if automatic:
 		full_activation()
 	if not action_ready:
 		turns_waiting += 1
 
-func post_turn():
-	if activation_slice and activation_object:
-		if await check_activation_cost():
-			activation_slice.colored = false
-		else:
-			activation_slice.colored = true
+func action_post():
+	update_progress_indicators()
+	update_activation_slice(1)
 		
 func check_requirements() -> bool:
 	"""Checks all requirements, including slice:slice activation cost"""
@@ -213,7 +183,6 @@ func full_activation() -> bool:
 	if activation_object:
 		activation_object.set_flavor(activation_index, SliceData.Flavors.NO_SLICE)
 	turns_waiting = 0
-	update_activation_slice()
 	return true
 
 #endregion

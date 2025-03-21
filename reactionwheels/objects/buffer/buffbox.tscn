@@ -22,5 +22,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0xfov")
 script = ExtResource("1_qad2i")
 
 [node name="SliceBuffbox" parent="." instance=ExtResource("2_obb2m")]
-self_modulate = Color(0.839216, 0.2, 0.517647, 1)
+self_modulate = Color(1, 0.960784, 0.839216, 1)
 layout_mode = 2
+color = true

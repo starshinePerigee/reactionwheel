@@ -1,0 +1,207 @@
+[gd_scene load_steps=6 format=3 uid="uid://de7hv6rcqyrd0"]
+
+[ext_resource type="Script" uid="uid://dawn27fces2o2" path="res://stages/t_5.gd" id="1_8edgf"]
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="1_25wqe"]
+[ext_resource type="PackedScene" uid="uid://b5w23rk57vsng" path="res://objects/wheel.tscn" id="2_kebbg"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="3_frxxl"]
+[ext_resource type="PackedScene" uid="uid://bpiyrvv1nq7as" path="res://objects/action_solo.tscn" id="4_8edgf"]
+
+[node name="T5" type="Node2D"]
+script = ExtResource("1_8edgf")
+
+[node name="Line2D4" type="Line2D" parent="."]
+points = PackedVector2Array(804, 668, 967, 669, 1185, 662)
+default_color = Color(0.900602, 0.434239, 0.702432, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(692, 275, 698, 718)
+default_color = Color(1, 0.960784, 0.839216, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(552, 445, 488, 445, 490, 272, 633, 273)
+default_color = Color(0.0901961, 0.635294, 0.721569, 1)
+
+[node name="Line2D3" type="Line2D" parent="."]
+points = PackedVector2Array(577, 178, 689, 178, 695, 255)
+default_color = Color(0.992157, 0.494118, 0.0784314, 1)
+
+[node name="Spacecraft" parent="." instance=ExtResource("1_25wqe")]
+visible = true
+
+[node name="Wheel" parent="Spacecraft" node_paths=PackedStringArray("input_buffers", "output_buffer_a", "output_buffer_c", "output_buffer_d") instance=ExtResource("2_kebbg")]
+offset_left = 536.0
+offset_top = 394.0
+offset_right = 536.0
+offset_bottom = 394.0
+display_name = "WHL-100 THE WHEEL"
+input_buffers = [NodePath("../Buffer")]
+starting_contents = Array[int]([3, 0, 4, 0])
+identifier_a = "ELECTRICAL"
+activation_flavor_a = 4
+output_flavors_a = Array[int]([3, 3])
+output_buffer_a = NodePath("../Buffer")
+cooldown_a = 2
+identifier_b = "PURGE"
+activation_flavor_b = 1
+cooldown_b = 2
+identifier_c = "HEAT-PT"
+activation_flavor_c = 4
+output_flavors_c = Array[int]([4])
+output_buffer_c = NodePath("../Buffer2")
+cooldown_c = 3
+automatic_c = true
+identifier_d = "POWER-PT"
+activation_flavor_d = 3
+output_flavors_d = Array[int]([3, 3, 3])
+output_buffer_d = NodePath("../Buffer2")
+automatic_d = true
+
+[node name="Buffer" parent="Spacecraft" instance=ExtResource("3_frxxl")]
+offset_left = 622.0
+offset_top = 235.0
+offset_right = 791.0
+offset_bottom = 290.0
+content_size = 4
+buffer_name = "BUF-EE HOPPER"
+
+[node name="Buffer2" parent="Spacecraft" instance=ExtResource("3_frxxl")]
+offset_left = 547.0
+offset_top = 631.0
+offset_right = 848.0
+offset_bottom = 686.0
+content_size = 8
+buffer_name = "BUF-FF MIXER"
+
+[node name="SoloAction" parent="Spacecraft" node_paths=PackedStringArray("input_buffers", "output_buffer") instance=ExtResource("4_8edgf")]
+offset_left = 939.0
+offset_top = 631.0
+offset_right = 1027.0
+offset_bottom = 695.0
+input_buffers = [NodePath("../Buffer2")]
+identifier = "STARS!"
+input_flavors = Array[int]([4, 3])
+output_flavors = Array[int]([7])
+output_buffer = NodePath("../Buffer3")
+cooldown = 2
+automatic = true
+
+[node name="SoloAction3" parent="Spacecraft" node_paths=PackedStringArray("output_buffer") instance=ExtResource("4_8edgf")]
+offset_left = 500.0
+offset_top = 146.0
+offset_right = 588.0
+offset_bottom = 210.0
+identifier = "THERMAL"
+output_flavors = Array[int]([4])
+output_buffer = NodePath("../Buffer")
+cooldown = 3
+automatic = true
+
+[node name="SoloAction4" parent="Spacecraft" node_paths=PackedStringArray("input_buffers") instance=ExtResource("4_8edgf")]
+offset_left = 659.0
+offset_top = 709.0
+offset_right = 747.0
+offset_bottom = 773.0
+input_buffers = [NodePath("../Buffer2")]
+identifier = "EMPTY"
+input_flavors = Array[int]([4, 4, 4, 4, 4, 3, 3, 3, 3, 3])
+input_optional = true
+cooldown = 8
+
+[node name="Buffer3" parent="Spacecraft" instance=ExtResource("3_frxxl")]
+offset_left = 1126.0
+offset_top = 631.0
+offset_right = 1263.0
+offset_bottom = 686.0
+content_size = 3
+buffer_name = "BUF-GG OUTPUT"
+
+[node name="SoloAction5" parent="Spacecraft" instance=ExtResource("4_8edgf")]
+offset_left = 200.0
+offset_top = 692.0
+offset_right = 288.0
+offset_bottom = 756.0
+identifier = "WAIT"
+cooldown = 0
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 73.0
+offset_top = 118.0
+offset_right = 490.0
+offset_bottom = 499.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "The Wheel!
+
+Each wheel has four actions.
+Each wheel action has an
+ACTIVATION SLICE:
+- if the activation slice matches
+  the wheel slice, the action
+  activates!
+- if it doesn't, it'll still be
+  consumed, and the ability
+  will go on cooldown!
+This can be good or bad."
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 102.0
+offset_top = 587.0
+offset_right = 519.0
+offset_bottom = 968.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Beating this challenge requires
+timing. To help, this action
+passes time with no effects:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 478.0
+offset_top = 728.0
+offset_right = 895.0
+offset_bottom = 1109.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Empty mixer:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 959.0
+offset_top = 562.0
+offset_right = 1376.0
+offset_bottom = 943.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Three stars this time!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 854.0
+offset_top = 151.0
+offset_right = 1271.0
+offset_bottom = 532.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Some actions are
+AUTOMATIC!
+
+They'll fire whenever 
+they get off cooldown.
+
+
+
+This action accepts any slice.
+Use it to clear junk!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 1150.0
+offset_top = 724.0
+offset_right = 1233.0
+offset_bottom = 748.0
+text = "RESTART"
+
+[connection signal="turn_ended" from="Spacecraft" to="." method="_on_spacecraft_turn_ended"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

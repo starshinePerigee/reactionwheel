@@ -65,7 +65,7 @@ offset_right = 248.0
 offset_bottom = 115.0
 
 [node name="SliceCapB" parent="Slices" instance=ExtResource("4_t3tib")]
-self_modulate = Color(1, 0.960784, 0.839216, 1)
+self_modulate = Color(0.839216, 0.2, 0.517647, 1)
 layout_mode = 0
 offset_left = 246.0
 offset_top = 57.0
@@ -73,7 +73,7 @@ offset_right = 322.0
 offset_bottom = 115.0
 
 [node name="SliceCapC" parent="Slices" instance=ExtResource("5_uhgkw")]
-self_modulate = Color(1, 0.960784, 0.839216, 1)
+self_modulate = Color(0.839216, 0.2, 0.517647, 1)
 layout_mode = 0
 offset_left = 246.0
 offset_top = 116.0
@@ -81,7 +81,7 @@ offset_right = 322.0
 offset_bottom = 174.0
 
 [node name="SliceCapD" parent="Slices" instance=ExtResource("6_5fmtv")]
-self_modulate = Color(1, 0.960784, 0.839216, 1)
+self_modulate = Color(0.839216, 0.2, 0.517647, 1)
 layout_mode = 0
 offset_left = 172.0
 offset_top = 116.0

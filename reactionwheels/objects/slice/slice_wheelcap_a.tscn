@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfbsmkqcskplt"]
+[gd_scene load_steps=5 format=3 uid="uid://bfbsmkqcskplt"]
 
 [ext_resource type="Texture2D" uid="uid://dtweovja4qfc1" path="res://assets/objects/wheel_action_activator.svg" id="1_cd11p"]
 [ext_resource type="Script" uid="uid://ykg258vpl8hk" path="res://objects/slice/slice.gd" id="2_cnkh0"]
 [ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="3_148wk"]
+[ext_resource type="Texture2D" uid="uid://b34oyfdictigt" path="res://assets/icons/debug_black.svg" id="4_cd11p"]
 
 [node name="SliceCapA" type="TextureRect"]
-self_modulate = Color(1, 0.960784, 0.839216, 1)
+self_modulate = Color(0.839216, 0.2, 0.517647, 1)
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 4
@@ -21,3 +22,5 @@ offset_left = 3.0
 offset_top = 4.0
 offset_right = 27.0
 offset_bottom = 28.0
+texture = ExtResource("4_cd11p")
+variant = 1

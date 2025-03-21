@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnv8ahmktgdqy" path="res://objects/action/test_action/test_action.gd" id="1_usseh"]
 [ext_resource type="PackedScene" uid="uid://cykb38cjy1rp6" path="res://objects/action/action.tscn" id="2_6bl2l"]
-[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="3_s3mjj"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="3_s3mjj"]
 [ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="4_hu787"]
 [ext_resource type="PackedScene" uid="uid://bo824v4oe1d1m" path="res://objects/slice/slice_buffbox.tscn" id="5_hu787"]
 
@@ -26,6 +26,7 @@ input_buffers = [NodePath("../Buffer"), NodePath("../Buffer3")]
 output_buffer = NodePath("../Buffer2")
 activation_flavor = 3
 reaction_input = Array[int]([4, 3])
+reaction_output = Array[int]([5])
 
 [node name="CheckBox" type="CheckBox" parent="."]
 offset_left = 429.0
@@ -46,6 +47,7 @@ offset_left = 99.0
 offset_top = 129.0
 offset_right = 99.0
 offset_bottom = 129.0
+content_size = 4
 buffer_name = "Input"
 
 [node name="Buffer2" parent="." instance=ExtResource("3_s3mjj")]
@@ -53,6 +55,7 @@ offset_left = 404.0
 offset_top = 129.0
 offset_right = 404.0
 offset_bottom = 129.0
+content_size = 4
 buffer_name = "Output"
 
 [node name="Buffer3" parent="." instance=ExtResource("3_s3mjj")]
@@ -60,7 +63,8 @@ offset_left = 54.0
 offset_top = 198.0
 offset_right = 234.0
 offset_bottom = 251.0
-contents = Array[int]([3, 3, 3])
+content_size = 4
+contents = Array[int]([3, 3, 3, 3])
 buffer_name = "Bonus input"
 
 [node name="FlavorDropdown" parent="." instance=ExtResource("4_hu787")]
@@ -106,12 +110,13 @@ offset_bottom = 307.0
 text = "Force Action"
 
 [node name="SliceBuffbox" parent="." instance=ExtResource("5_hu787")]
-self_modulate = Color(0.0901961, 0.635294, 0.721569, 1)
+self_modulate = Color(1, 0.960784, 0.839216, 1)
 offset_left = 310.0
 offset_top = 246.0
 offset_right = 342.0
 offset_bottom = 278.0
 flavor = 3
+color = true
 
 [connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="toggled" from="CheckBox2" to="." method="_on_check_box_2_toggled"]

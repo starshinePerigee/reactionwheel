@@ -4,35 +4,48 @@ class_name Buffer
 
 signal slice_buffer_overflow(slice: SliceData.Flavors)
 
+var endcap = preload("res://assets/objects/buffer_cap.svg")
 var slice_buffbox = preload("res://objects/buffer/buffbox.tscn")
 
 #region UI and export
-@onready var slot_container = $VBoxContainer/PanelContainer2/HBoxContainer/SlotContainer
+@onready var slot_container = $VBoxContainer/PrimaryContainer
 
-func _set_children_size():
-	var cont_children = slot_container.get_children()
-	var old_size = len(cont_children)
-	if old_size > content_size:
-		for i in range(old_size, content_size, -1):
-			var to_pop = cont_children[i - 1]
-			slot_container.remove_child(to_pop)
-			to_pop.queue_free()
-	elif old_size < content_size:
-		for i in range(content_size - old_size):
-			var segment = slice_buffbox.instantiate()
-			segment.flavor = SliceData.Flavors.NO_SLICE
-			segment.name = "SliceContainer%d" % (old_size + i)
-			slot_container.add_child(segment)
-			segment.owner = get_tree().edited_scene_root
-
-@export var content_size: int = 4:
+@export_range(0, 100) var content_size: int = 4:
 	set(value):
 		content_size = value
-		if content_size < 0:
-			content_size = 0
-		if not is_node_ready():
-			await ready
-		_set_children_size()
+		_rebuild_children()
+
+@export_range(1, 10) var row_count: int = 1:
+	set(value):
+		row_count = value
+		_rebuild_children()
+
+var container_map: Dictionary = {}
+
+func _rebuild_children():
+	if not is_node_ready():
+		await ready
+	container_map = {}
+	for c in slot_container.get_children():
+		slot_container.remove_child(c)
+		c.queue_free()
+	var items_per_row = int(ceil((float(content_size) + 2) / row_count))
+	var hbox = null
+	for i in range(2 + content_size):
+		if i % items_per_row == 0:
+			hbox = HBoxContainer.new()
+			hbox.add_theme_constant_override("separation", -3)
+			slot_container.add_child(hbox)
+		var next = null
+		if i == 0 or i == content_size + 1:
+			next = TextureRect.new()
+			next.texture = endcap
+		else:
+			next = slice_buffbox.instantiate()
+			next.flavor = SliceData.Flavors.NO_SLICE
+			container_map[i - 1] = next
+		hbox.add_child(next)
+	slot_container.get_children()[-1].alignment = BoxContainer.ALIGNMENT_END
 
 @export var contents: Array[SliceData.Flavors] = []:
 	set(value):
@@ -42,11 +55,10 @@ func _set_children_size():
 			contents = value
 		if not is_node_ready():
 			await ready
-		var cont_children = slot_container.get_children()
 		for i in len(contents):
-			cont_children[-i-1].flavor = contents[i]
+			container_map[content_size-i-1].flavor = contents[i]
 		for i in range(len(contents), content_size, 1):
-			cont_children[-i-1].flavor = SliceData.Flavors.NO_SLICE
+			container_map[content_size-i-1].flavor = SliceData.Flavors.NO_SLICE
 
 @export var buffer_name: String = "NEW BUFFER":
 	set(value):
@@ -58,7 +70,7 @@ func _set_children_size():
 
 #region operating functions
 func _ready() -> void:
-	_set_children_size()
+	_rebuild_children()
 	prune_contents()
 #endregion
 
@@ -89,7 +101,7 @@ func add_slice(slice: SliceData.Flavors) -> void:
 		return
 	var update_index = len(contents)
 	contents.append(slice)
-	slot_container.get_children()[-update_index-1].flavor = slice
+	container_map[content_size-update_index-1].flavor = slice
 	
 func pop_slice(loc: int = 0) -> SliceData.Flavors:
 	if len(contents) <= loc:
@@ -98,7 +110,7 @@ func pop_slice(loc: int = 0) -> SliceData.Flavors:
 	contents = contents.slice(0, loc) + contents.slice(loc+1)
 	return popped_slice
 
-func remove_flavor(flavor: SliceData.Flavors) -> bool:
+func remove_flavor(flavor: SliceData.Flavors, _dest: Vector2 = Vector2(-383, 0)) -> bool:
 	var idx = contents.find(flavor)
 	if idx < 0:
 		return false
@@ -118,3 +130,12 @@ func set_flavor(index: int = 0, flavor: SliceData.Flavors = SliceData.Flavors.NO
 	if flavor == SliceData.NO_SLICE:
 		prune_contents()
 #endregion
+
+func action_pre():
+	pass
+
+func mid_turn():
+	pass
+
+func action_post():
+	pass

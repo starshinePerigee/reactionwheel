@@ -1,0 +1,181 @@
+[gd_scene load_steps=6 format=3 uid="uid://0dpb5le20pgt"]
+
+[ext_resource type="PackedScene" uid="uid://yvais2xr6ga3" path="res://objects/buffer/buffbox.tscn" id="1_u1qka"]
+[ext_resource type="Script" uid="uid://bonxk267t5uwr" path="res://stages/t_3.gd" id="1_u61x6"]
+[ext_resource type="PackedScene" uid="uid://bpiyrvv1nq7as" path="res://objects/action_solo.tscn" id="2_hwyll"]
+[ext_resource type="PackedScene" uid="uid://desxr3a50vvq" path="res://objects/spacecraft/spacecraft.tscn" id="2_u61x6"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="3_u61x6"]
+
+[node name="s3" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u61x6")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(758, 278)
+points = PackedVector2Array(133, 316, 248, 210)
+width = 5.0
+default_color = Color(1, 0.960784, 0.839216, 1)
+
+[node name="Line2D" type="Line2D" parent="Line2D"]
+position = Vector2(758, 278)
+points = PackedVector2Array(-612, -300, -635, -374)
+width = 5.0
+default_color = Color(1, 0.960784, 0.839216, 1)
+
+[node name="Line2D" type="Line2D" parent="Line2D/Line2D"]
+position = Vector2(758, 278)
+points = PackedVector2Array(-1335, -386, -1372, -386, -1372, -493)
+width = 5.0
+default_color = Color(0.235294, 0.694118, 0.764706, 1)
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 220.0
+offset_right = 624.0
+offset_bottom = 281.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "These are SLICES. They represent
+things happening on a spacecraft."
+
+[node name="Buffbox4" parent="." instance=ExtResource("1_u1qka")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 328.0
+offset_right = 612.0
+offset_bottom = 364.0
+flavor = 3
+
+[node name="Buffbox3" parent="." instance=ExtResource("1_u1qka")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 496.0
+offset_right = 612.0
+offset_bottom = 532.0
+flavor = 6
+
+[node name="Buffbox2" parent="." instance=ExtResource("1_u1qka")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 440.0
+offset_right = 612.0
+offset_bottom = 476.0
+flavor = 5
+
+[node name="Buffbox" parent="." instance=ExtResource("1_u1qka")]
+layout_mode = 1
+offset_left = 576.0
+offset_top = 384.0
+offset_right = 572.0
+offset_bottom = 380.0
+flavor = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 565.0
+offset_right = 760.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "They are produced and consumed
+by actions."
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 139.0
+offset_right = 1064.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "This action produces stars!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 386.0
+offset_right = 547.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Heat:"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 440.0
+offset_right = 570.0
+offset_bottom = 472.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Telemetry:"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 496.0
+offset_right = 547.0
+offset_bottom = 528.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Faults:"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 330.0
+offset_right = 547.0
+offset_bottom = 362.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "Power:"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 602.0
+offset_right = 1032.0
+offset_bottom = 727.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "This is a buffer.
+It holds slices.
+
+Fill it up to continue."
+
+[node name="Spacecraft" parent="." instance=ExtResource("2_u61x6")]
+visible = true
+
+[node name="S3Action" parent="Spacecraft" node_paths=PackedStringArray("output_buffer") instance=ExtResource("2_hwyll")]
+offset_left = 859.0
+offset_top = 268.0
+offset_right = 947.0
+offset_bottom = 332.0
+identifier = "FULL OF STARS"
+output_flavors = Array[int]([7, 7])
+output_buffer = NodePath("../S3Buffer")
+cooldown = 0
+
+[node name="S3Buffer" parent="Spacecraft" instance=ExtResource("3_u61x6")]
+offset_left = 946.0
+offset_top = 414.0
+offset_right = 1181.0
+offset_bottom = 469.0
+content_size = 6
+buffer_name = "BUF-AA DEMOBUFFER"
+
+[connection signal="turn_ended" from="Spacecraft" to="." method="_on_spacecraft_turn_ended"]

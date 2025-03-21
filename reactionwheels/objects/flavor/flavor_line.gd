@@ -17,7 +17,8 @@ func _update_contents():
 			c.queue_free()
 		if optional:
 			var o1 = Label.new()
-			o1.text = "{  "
+			o1.text = "[  "
+			o1.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 			add_child(o1)
 		for f in d.keys():
 			if d[f] >= 5:
@@ -30,7 +31,8 @@ func _update_contents():
 					add_child(Flavor.new(f))
 		if optional:
 			var o2 = Label.new()
-			o2.text = "  }"
+			o2.text = " *]"
+			o2.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 			add_child(o2)
 		add_theme_constant_override("separation", 5 - get_child_count() * 3)
 	

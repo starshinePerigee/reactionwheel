@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d03t84tkfk0aw" path="res://objects/wheel/test_wheel/test_wheel.gd" id="1_e2gqm"]
 [ext_resource type="PackedScene" uid="uid://cunsuhq6ishlo" path="res://objects/wheel/wheel_core.tscn" id="1_m52hx"]
 [ext_resource type="PackedScene" uid="uid://ca12t12f54kde" path="res://objects/flavor/flavor_dropdown.tscn" id="4_cqrck"]
-[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer/buffer.tscn" id="4_kjwfj"]
+[ext_resource type="PackedScene" uid="uid://n6os6n6vg5kf" path="res://objects/buffer.tscn" id="4_kjwfj"]
 [ext_resource type="PackedScene" uid="uid://c31t78q55lc0p" path="res://objects/flavor/flavor.tscn" id="5_una5m"]
 [ext_resource type="Texture2D" uid="uid://b2x0i66umhlsf" path="res://assets/icons/debug.svg" id="6_vndi5"]
 
@@ -16,7 +16,6 @@ offset_top = 245.0
 offset_right = 339.0
 offset_bottom = 272.0
 input_buffers = [NodePath("../Buffer")]
-starting_contents = Array[int]([])
 
 [node name="LoadButton" type="Button" parent="."]
 offset_left = 157.0
@@ -43,6 +42,7 @@ offset_left = 345.0
 offset_top = 100.0
 offset_right = 525.0
 offset_bottom = 161.0
+content_size = 4
 
 [node name="Flavor" parent="." instance=ExtResource("5_una5m")]
 custom_minimum_size = Vector2(32, 32)
