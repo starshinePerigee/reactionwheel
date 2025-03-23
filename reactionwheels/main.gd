@@ -5,6 +5,8 @@ func _ready():
 		child.visible = false
 	$bg.visible = true
 	$s1.visible = true
+	$Label2.visible = true
+	#$Button.visible=true
 
 func _on_s_1_button_pressed() -> void:
 	$s1.visible = false
@@ -23,4 +25,4 @@ func _on_t_4_success() -> void:
 	$T5.visible = true
 
 func _on_t_5_success() -> void:
-	get_tree().change_scene("res://stages/level_10.tscn")
+	get_tree().change_scene_to_file("res://stages/level_10.tscn")

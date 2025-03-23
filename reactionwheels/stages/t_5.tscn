@@ -94,7 +94,6 @@ identifier = "THERMAL"
 output_flavors = Array[int]([4])
 output_buffer = NodePath("../Buffer")
 cooldown = 3
-automatic = true
 
 [node name="SoloAction4" parent="Spacecraft" node_paths=PackedStringArray("input_buffers") instance=ExtResource("4_8edgf")]
 offset_left = 659.0

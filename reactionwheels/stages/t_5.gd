@@ -8,5 +8,5 @@ func _on_button_pressed() -> void:
 
 
 func _on_spacecraft_turn_ended() -> void:
-	if len($Spacecraft/Buffer3) >= 3:
+	if len($Spacecraft/Buffer3.contents) >= 3:
 		success.emit()

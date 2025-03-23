@@ -138,9 +138,28 @@ visible = false
 visible = false
 position = Vector2(49, -8)
 
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 568.0
+offset_top = 481.0
+offset_right = 687.0
+offset_bottom = 505.0
+text = "aaaaaaaaaaaa"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1312.0
+offset_top = 720.0
+offset_right = 1423.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(1, 0.960784, 0.839216, 1)
+theme_override_font_sizes/font_size = 28
+text = "0.1.2"
+
 [connection signal="pressed" from="s1/S1Button" to="." method="_on_s_1_button_pressed"]
 [connection signal="fired" from="s2/S2Action" to="." method="_on_s_2_action_fired"]
 [connection signal="complete" from="s3" to="." method="_on_s_3_complete"]
 [connection signal="restart" from="T4" to="." method="_on_t_4_restart"]
 [connection signal="success" from="T4" to="." method="_on_t_4_success"]
 [connection signal="success" from="T5" to="." method="_on_t_5_success"]
+[connection signal="pressed" from="Button" to="." method="_on_t_5_success"]
